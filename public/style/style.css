@@ -1,0 +1,116 @@
+/* Brand Colors */
+:root {
+    --color-brand-primary: #f3e9f1;
+    --color-brand-second: #8f5bfe;
+    --color-brand-third: #e68a07;
+}
+
+.bg-brand-primary {
+    background-color: var(--color-brand-primary);
+}
+.bg-brand-second {
+    background-color: var(--color-brand-second);
+}
+.bg-brand-third {
+    background-color: var(--color-brand-third);
+}
+.c-brand-second {
+    color: var(--color-brand-second);
+}
+
+
+/* Brand Font */
+@font-face {
+    font-family: 'belligerent_madnessregular'; /* font created by P.D. Magnus, Fontmonkey */
+    src: url('../font/belligerent-webfont.woff') format("woff");
+}
+
+.font-brand {
+    font-family:'belligerent_madnessregular' , sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* refactoring */
+
+img {
+    object-fit: cover;
+    object-position: top;
+}
+
+/* HEADER */
+
+/* cart icon */
+@media screen and (min-width:768px) {
+    .cart span{
+        color:transparent;
+    }
+    .cart::before {
+        content: "\f07a";
+        position: absolute;
+        top:0;
+        bottom:0;
+        right: 0;
+        left:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Font Awesome 5 Free";
+        font-style: normal; /* fontawesome recommendation */
+        font-variant: normal; /* fontawesome recommendation */
+        text-rendering: auto; /* fontawesome recommendation */
+        font-weight: 900;
+        font-size: 1.5rem;
+    }
+}
+
+/* HOME */
+
+/* Products list */
+#list-products .card{
+    border-color:transparent;
+}
+
+#list-products .card:hover {
+    border-color:rgb(182, 182, 182);
+}
+
+#list-products .card::before {
+        position: absolute;
+        top:0;
+        bottom:0;
+        right: 0;
+        left:0;
+        z-index: 1;
+}
+
+#list-products .card:hover::before {
+    /* content: "\f055"; */
+    content:"\f00e";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Font Awesome 5 Free";
+    font-style: normal; /* fontawesome recommendation */
+    font-variant: normal; /* fontawesome recommendation */
+    text-rendering: auto; /* fontawesome recommendation */
+    font-weight: 900;
+    font-size: 2rem;
+    /* background-color:rgba(255,255,255,0.6); */
+    color: black;
+    opacity:0.8;
+}
+
+
+/* PRODUCT PAGE */
+#product img {
+    height:500px;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-brand-second);
+    border-color: var(--color-brand-second);
+}
