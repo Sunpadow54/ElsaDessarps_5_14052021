@@ -5,25 +5,31 @@ const euro = new Intl.NumberFormat('fr-FR', {
     minimumFractionDigits: 2
 });
 
+const urlApiFurniture = "http://localhost:3000/api/furniture";
+const urlApiCameras = "http://localhost:3000/api/cameras";
+const urlApiTeddies = "http://localhost:3000/api/teddies";
 
+// LIST OF PRODUCTS
 // SEARCH DATA of the API
-fetch("http://localhost:3000/api/furniture")
+fetch(urlApiFurniture)
 
     // first promise (get json to convert)
-    .then(response => {
+    .then(apiResponse => {
         // test if request is ok 
-        if (response.ok) {
+        if (apiResponse.ok) {
             // convert json
-            return response.json();
+            return apiResponse.json();
         } else {
-            console.log("erreur connexion Api");
+            // if error
+            throw "impossible d'accéder à l'API. erreur status:" + apiResponse.status;
         }
     })
 
     // second promise (if first is resolved)
-    .then(dataApi => {
+    .then(dataApiProducts => {
+
         // loop inside the data of the API
-        for (let product of dataApi) {
+        for (let product of dataApiProducts) {
 
             // variable for selecting the bloc where the products will be shown.
             const blocOfProducts = document.getElementById('list-products');
@@ -36,10 +42,10 @@ fetch("http://localhost:3000/api/furniture")
             // insert all data of the product
             newLi.innerHTML =
                 `<article>
-                    <a href="" class="card h-100 text-center text-decoration-none text-reset">
+                    <a href="produit.html?id=${product._id}" class="card h-100 text-center text-decoration-none text-reset">
                         <img src="${product.imageUrl}" class="card-img-top position-relative" alt="${product.name} Orinoco" height="400" width="415" />
                         <div class="card-body">
-                            <h2 class="card-title h5 text-uppercase">${product.name}</h2>
+                            <h2 class="card-title h5">${product.name}</h2>
                             <p class="card-text">${euro.format(product.price)}</p>
                         </div>
                     </a>
@@ -49,6 +55,6 @@ fetch("http://localhost:3000/api/furniture")
     })
 
     //catch error (! need to be modified)
-    .catch(err => {
-        console.log('erreur' + err);
+    .catch(error => {
+        console.log(error);
     });
