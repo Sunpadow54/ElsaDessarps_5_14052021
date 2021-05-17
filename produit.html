@@ -20,6 +20,10 @@
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="public/style/style.css" />
 
+	<!-- Javascript view -->
+	<script src="vue/api.js"></script>
+	
+
 	<title>Orinoco - Produit</title>
 </head>
 
@@ -41,7 +45,7 @@
 				<ul class="navbar-nav">
 					<!-- Cart -->
 					<li class="nav-item">
-						<a href="" class="nav-link cart position-relative" aria-label="voir le panier"
+						<a href="panier.html" class="nav-link cart position-relative" aria-label="voir le panier"
 							title="voir le panier">
 							<span class="text-uppercase">Panier</span>
 						</a>
@@ -71,24 +75,9 @@
 		</nav>
 
 		<!-- PRODUCT -->
-		<article id="product" class="card mb-3">
-			<div class="row g-0 h-100">
-				<div class="col-md-6">
-					<img class="w-100 h-100" src="" alt="..." height="274" width="415" />
-				</div>
-				<div class="col-md-6 d-flex flex-column">
-					<div class="card-body">
-						<h2 class="card-title h3 font-brand"></h2>
-						<p class="card-text">
-						</p>
-						<span class="card-text"></span>
-					</div>
-					<div class="card-footer">
-						<button class="btn btn-outline-dark">Ajouter au panier</button>
-					</div>
-				</div>
-			</div>
+		<article id="product" class="card mb-3 border-0">
 		</article>
+
 	</main>
 
 	<!-- FOOTER -->
@@ -96,9 +85,8 @@
 		<p class="text-center">orinoco p5 Openclassrooms</p>
 	</footer>
 
-	<!-- Javascript view -->
 	<script src="vue/product.js"></script>
-
+	
 	<!-- JavaScript Bootstrapp -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
