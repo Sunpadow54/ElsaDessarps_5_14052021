@@ -1,5 +1,7 @@
 // LIST OF PRODUCTS
 
+// ------------------------------------ FUNCTIONS ------------------------------------
+
 // convert number into euro format
 const euro = new Intl.NumberFormat('fr-FR', {
     style: 'currency',
@@ -10,11 +12,12 @@ const euro = new Intl.NumberFormat('fr-FR', {
 
 // FUNCTION : to show a list of products
 const showAllProducts = async (urlApi) => {
+    
     // fetch the api data
-    let products = await fetchProduct(urlApi);
+    let products = await fetchAPI(urlApi);
 
     // initialise variable for html
-    let htmlListProducts ="";
+    let htmlListProducts = "";
 
     // loop inside the data of the API
     for (let product of products) {
@@ -39,6 +42,10 @@ const showAllProducts = async (urlApi) => {
     document.getElementById('list-products').innerHTML = htmlListProducts; // insert html
 }
 
-// Show all products
+
+// ---------------------------------------------------------------------------------------
+// ------------------------------------ POPULATE HTML ------------------------------------
+
+// Show all Products
 showAllProducts(urlApiFurniture)
     .catch(error => {document.getElementById('list-products').innerHTML = error.message});

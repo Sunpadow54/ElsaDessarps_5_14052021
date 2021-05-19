@@ -1,11 +1,18 @@
-// Api Url
+// API
+
+// ------------------------------------ VARIABLE ------------------------------------
+
+// All Api Url
+
 const urlApiFurniture = "http://localhost:3000/api/furniture";
 const urlApiCameras = "http://localhost:3000/api/cameras";
 const urlApiTeddies = "http://localhost:3000/api/teddies";
 
+// ------------------------------------ FUNCTIONS ------------------------------------
 
-// FUNCTION : fetch Api / return data
-const fetchProduct = async apiUrl => {
+// Function : fetch Api / return data
+
+const fetchAPI = async apiUrl => {
 
 	const response = await fetch(apiUrl);
 
@@ -15,7 +22,7 @@ const fetchProduct = async apiUrl => {
 	}
 
 	const data = await response.json();
-console.log(data);
+
 	if(data === 0) {
 		message = `Désolé, il n'existe aucun produit de ce type ( erreur status: ${response.status} )`;
 		throw new Error(message);
