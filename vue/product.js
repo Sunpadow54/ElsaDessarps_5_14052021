@@ -15,7 +15,6 @@ const findOneProductById = async (urlApi) => {
 
     // return product object
     return productApi;
-
 }
 
 
@@ -33,7 +32,7 @@ const showOneProduct = (productToShow) => {
                 <div class="col-lg-6 d-flex flex-column">
                     <div class="card-body">
                         <h2 class="card-title h3 font-brand">${productToShow.name}</h2>
-                        <p class="card-text">${productToShow._description}</p>
+                        <p class="card-text">${productToShow.description}</p>
                         <span class="card-text">${euro.format(productToShow.price)}</span>
                     </div>
                     <div class="card-footer">
