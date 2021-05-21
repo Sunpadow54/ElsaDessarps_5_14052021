@@ -88,8 +88,8 @@ img {
 }
 
 #list-products .card:hover::before {
-    /* content: "\f055"; */
-    content:"\f00e";
+    content: "\f055";
+    /* content:"\f00e"; */
     display: flex;
     justify-content: center;
     align-items: center;
