@@ -55,14 +55,17 @@ let populateProductObj = (productApi) => {
     product = {
         _id: productApi._id,
         name: productApi.name,
+        imageUrl: productApi.imageUrl,
         price: productApi.price,
+        quantity: 1,
     }
 }
 
 
+
 // Function : test if a value exist
 
-const isValueInObj = (objToCheck, thingToFind) => {
+/* const findObjFromId = (objToCheck, thingToFind) => {
     // Loop the array
     for (let array of objToCheck) {
         // If the array contain and object id similar to what we search
@@ -71,17 +74,8 @@ const isValueInObj = (objToCheck, thingToFind) => {
             return true;
         }
     }
-}
+} */
 
-
-// Function : Add to Local Storage
-
-const addToLocalStorage = (productToAdd) => {
-
-    allProductsInLocalStorage.push(productToAdd);
-    // convert to json and set item for localstorage 'cartStorage'
-    localStorage.setItem('cartStorage', JSON.stringify(allProductsInLocalStorage));
-}
 
 
 // Function : populate LocalStorage
@@ -89,16 +83,16 @@ const addToLocalStorage = (productToAdd) => {
 const order = () => {
     // if cartStorage key is null
     if (!localStorage.cartStorage) {
-        // initialise 'allProductsInLocalStorage' as array and push 'product' object inside 
-        allProductsInLocalStorage = [];
+        // initialise 'cartStorage' as array and push 'product' object inside 
+        cartStorage = [];
         // add product to 'cartStorage' key
-        addToLocalStorage(product);
+        addToCartStorage(product);
     }
 
     // else if the product is not already in the localStorage 'cartStorage'
-    else if (!isValueInObj(allProductsInLocalStorage, idProduct)) {
+    else if (!findObjFromId(cartStorage, idProduct)) {
         // add product to 'cartStorage' key
-        addToLocalStorage(product);
+        addToCartStorage(product);
     }
 }
 
@@ -111,11 +105,11 @@ const urlParameters = (new URL(document.location)).searchParams;
 // id of the product
 let idProduct = urlParameters.get('id');
 
-// --- LocalStorage
+/* // --- LocalStorage
 // content of localStorage (key: cartStorage)
-let allProductsInLocalStorage = JSON.parse(localStorage.getItem('cartStorage'));
+let cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
 // product to insert in LocalStorage
-let product = {};
+let product = {}; */
 
 // --- LocalStorage
 // button for adding the product in the cart
