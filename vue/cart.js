@@ -25,7 +25,7 @@ let showCartProducts = () => {
                         <button type="button" class="btn btn-lg btn-light fw-light quantity" aria-label="ajouter">+</button>
                     </div>
                 </td>
-                <td class="fw-light text-center">totalprice</td>
+                <td id="total-produit_${productInCart._id}" class="fw-light text-center total-product">${euro.format(multiply(productInCart.price,productInCart.quantity))}</td>
             </tr>
         `;
     };
@@ -36,7 +36,7 @@ let showCartProducts = () => {
 
 // Function : add remove product quantity
 
-function quantity() {
+function changeQty() {
 
     // search the span showing the quantity
     let divToShowQuantity = this.parentElement.children[1];
@@ -52,6 +52,8 @@ function quantity() {
 
     divToShowQuantity.textContent = Math.max(quantity, 1);
     changeQtyInStorage(divToShowQuantity);
+    showTotal(divToShowQuantity);
+
 }
 
 
@@ -72,6 +74,22 @@ const changeQtyInStorage = (div) => {
 }
 
 
+const multiply = (price, quantity) => {
+    return price * quantity;
+}
+
+
+function showTotal(div) {
+    let id = div.getAttribute('id').split('_');
+
+    let productChanged = findOneProductById(cartStorage, id[1]);
+
+    let totalresult = multiply(productChanged.price, productChanged.quantity);
+
+    document.getElementById('total-produit_' + id[1]).textContent = euro.format(totalresult);
+    
+}
+
 // ------------------------------------ VARIABLES ------------------------------------
 
 // html content of the table cart
@@ -83,6 +101,6 @@ let htmlProductsTable = '';
 showCartProducts();
 
 document.querySelectorAll('button.quantity').forEach(buttonAdd =>
-    buttonAdd.addEventListener('click', quantity)
+    buttonAdd.addEventListener('click', changeQty)
 );
 
