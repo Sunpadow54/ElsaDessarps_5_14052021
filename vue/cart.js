@@ -9,7 +9,7 @@ let showCartProducts = () => {
             `
             <tr class="align-middle">
                 <td scope="row">
-                    <button type="button" class="btn-close" aria-label="Supprimer"></button>
+                    <button type="button" id="delete_${productInCart._id}" class="btn-close" aria-label="Supprimer"></button>
                 </td>
                 <td class="">
                     <a href="produit.html?id=${productInCart._id}" class="btn">
@@ -35,9 +35,30 @@ let showCartProducts = () => {
 };
 
 
+// Function: Delete a Product from Cart
+
+function deleteProduct () {
+    // Delete in LocalStorage
+    let idItem = this.getAttribute("id").split("_")[1];
+    let itemToDelete = findProductById(cartStorage, idItem);
+    let indexItem = cartStorage.indexOf(itemToDelete);
+
+    cartStorage.splice(indexItem, 1);
+
+    addToLocalStorage();
+
+    // Delete html
+    let divToDelete = this.parentElement.parentElement;
+    divToDelete.remove();
+
+}
+
+
 const calcTotalproduct = (product) => {
 	return product.price * product.quantity;
 };
+
+
 
 // ------------------------------------ VARIABLES ------------------------------------
 
@@ -52,9 +73,10 @@ showCartProducts();
 
 // Events
 
+// Button : Select a Quantity of a product
 document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
-	buttonAdd.addEventListener("click", function () {
-        
+	buttonAdd.addEventListener('click', function () {
+
         // Find the product
 		const idItem = this.parentElement.getAttribute("id").split("_")[1];
         let productChanged = findProductById(cartStorage, idItem);
@@ -81,3 +103,8 @@ document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
 		divTotalProd.textContent = euro.format(totalProduct);
 	})
 );
+
+// Button : Delete a Product
+document.querySelectorAll('.btn-close').forEach((btnClose) => {
+    btnClose.addEventListener('click', deleteProduct)
+});
