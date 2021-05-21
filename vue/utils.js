@@ -4,7 +4,7 @@
 const euro = new Intl.NumberFormat('fr-FR', {
     style: 'currency',
     currency: 'EUR',
-    minimumFractionDigits: 2
+    minimumFractionDigits: /* 2 */0
 });
 
 // --- LocalStorage
@@ -20,7 +20,7 @@ let product = {};
 
 // Function : to search a product (object) inside an array from _id parameter
 
-const findOneProductById = (arrayToCheck, thingToFind) => {
+const findProductById = (arrayToCheck, thingToFind) => {
     const product = arrayToCheck.find(productInArray => productInArray._id == thingToFind);
     return product;
 

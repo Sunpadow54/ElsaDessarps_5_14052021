@@ -59,7 +59,7 @@ const order = () => {
     }
 
     // else if the product is not already in the localStorage 'cartStorage'
-    else if (!findOneProductById(cartStorage, idProduct)) {
+    else if (!findProductById(cartStorage, idProduct)) {
         // add product to 'cartStorage' key
         addToCartStorage(product);
     }
@@ -90,7 +90,7 @@ let btnOrder = document.getElementById('product');
 */
 
 fetchAPI(urlApiFurniture)
-    .then(dataApi => findOneProductById(dataApi, idProduct))
+    .then(dataApi => findProductById(dataApi, idProduct))
     .then(product => {
         showOneProduct(product)
         populateProductObj(product)
