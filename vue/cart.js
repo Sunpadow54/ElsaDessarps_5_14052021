@@ -5,8 +5,8 @@
 // Show the products in cart
 let showCartProducts = () => {
     for (let productInCart of cartStorage) {
-        htmlProductsTable += 
-        `
+        htmlProductsTable +=
+            `
             <tr class="align-middle">
                 <td scope="row">
                     <button type="button" class="btn-close" aria-label="Supprimer"></button>
@@ -36,7 +36,7 @@ let showCartProducts = () => {
 
 // Function : add remove product quantity
 
-function quantity () {
+function quantity() {
 
     // search the span showing the quantity
     let divToShowQuantity = this.parentElement.children[1];
@@ -55,18 +55,19 @@ function quantity () {
 }
 
 
+// Function : change quantity in the LocalStorage
 
 const changeQtyInStorage = (div) => {
-    
+
     // change localStorage
     let id = div.getAttribute('id').split('_');
 
-    let productChanged = findObjFromId(cartStorage, id[1]);
+    let productChanged = findOneProductById(cartStorage, id[1]);
 
     if (productChanged) {
         productChanged.quantity = div.textContent;
     }
- 
+
     addToLocalStorage();
 }
 
@@ -76,15 +77,12 @@ const changeQtyInStorage = (div) => {
 // html content of the table cart
 let htmlProductsTable = '';
 
-
 // ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
 
 showCartProducts();
 
-const buttonsAdd = document.querySelectorAll('button.quantity');
-
-buttonsAdd.forEach( buttonAdd => 
+document.querySelectorAll('button.quantity').forEach(buttonAdd =>
     buttonAdd.addEventListener('click', quantity)
 );
 

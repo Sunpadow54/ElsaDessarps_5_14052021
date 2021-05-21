@@ -4,8 +4,9 @@
 
 
 // FUNCTION : to show a list of products
+
 const showAllProducts = async (urlApi) => {
-    
+
     // fetch the api data
     let products = await fetchAPI(urlApi);
 
@@ -41,4 +42,4 @@ const showAllProducts = async (urlApi) => {
 
 // Show all Products
 showAllProducts(urlApiFurniture)
-    .catch(error => {document.getElementById('list-products').innerHTML = error.message});
+    .catch(error => { document.getElementById('list-products').innerHTML = error.message });

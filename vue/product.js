@@ -3,21 +3,6 @@
 // ------------------------------------ FUNCTIONS ------------------------------------
 
 
-// Function : Find one product 
-
-const findOneProductById = async (urlApi) => {
-
-    // fetch api
-    const allProductsApi = await fetchAPI(urlApi);
-
-    // search the product from id parameter
-    const productApi = allProductsApi.find(productInApi => productInApi._id === idProduct);
-
-    // return product object
-    return productApi;
-}
-
-
 // Function : show product in Html
 
 const showOneProduct = (productToShow) => {
@@ -62,22 +47,6 @@ let populateProductObj = (productApi) => {
 }
 
 
-
-// Function : test if a value exist
-
-/* const findObjFromId = (objToCheck, thingToFind) => {
-    // Loop the array
-    for (let array of objToCheck) {
-        // If the array contain and object id similar to what we search
-        if (array._id === thingToFind) {
-            console.log("This product is already in the cart");
-            return true;
-        }
-    }
-} */
-
-
-
 // Function : populate LocalStorage
 
 const order = () => {
@@ -90,7 +59,7 @@ const order = () => {
     }
 
     // else if the product is not already in the localStorage 'cartStorage'
-    else if (!findObjFromId(cartStorage, idProduct)) {
+    else if (!findOneProductById(cartStorage, idProduct)) {
         // add product to 'cartStorage' key
         addToCartStorage(product);
     }
@@ -99,31 +68,29 @@ const order = () => {
 
 // ------------------------------------ VARIABLES ------------------------------------
 
-// --- URL
+
 // Get id_product from url
 const urlParameters = (new URL(document.location)).searchParams;
 // id of the product
 let idProduct = urlParameters.get('id');
 
-/* // --- LocalStorage
-// content of localStorage (key: cartStorage)
-let cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
-// product to insert in LocalStorage
-let product = {}; */
-
-// --- LocalStorage
 // button for adding the product in the cart
 let btnOrder = document.getElementById('product');
-
 
 
 
 // ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
 
-// Find the product / Show the product / Add data of the product in variable // Can add to cart
+/* 
+// After sucessfully Fetch from Api :
+    // Find the product 
+    // Show the product / & / Add data of the product in variable
+    // Can add to cart
+*/
 
-findOneProductById(urlApiFurniture)
+fetchAPI(urlApiFurniture)
+    .then(dataApi => findOneProductById(dataApi, idProduct))
     .then(product => {
         showOneProduct(product)
         populateProductObj(product)
