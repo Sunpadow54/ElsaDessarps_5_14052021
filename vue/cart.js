@@ -30,8 +30,7 @@ let showCartProducts = () => {
         `;
     };
 
-	document.querySelector("#list-products-in-cart tbody").innerHTML = htmlProductsTable;
-
+    cartTable.innerHTML = htmlProductsTable;
 };
 
 
@@ -51,27 +50,50 @@ function deleteProduct () {
     let divToDelete = this.parentElement.parentElement;
     divToDelete.remove();
 
+    // show new total
+    totalDiv.textContent = euro.format(calcTotal());
 }
 
+
+// Function : multiply product price with quantity
 
 const calcTotalproduct = (product) => {
 	return product.price * product.quantity;
 };
 
 
+// Function : calcul the summ of products
 
-// ------------------------------------ VARIABLES ------------------------------------
+const calcTotal = () => {
+
+    let summTotal = 0;
+
+    for (let product of cartStorage) {
+
+        productPrice = calcTotalproduct(product);
+        summTotal = summTotal + productPrice;
+    }
+    return summTotal;
+}
+
+
+// =======================================================================================
+// ------------------------------------ VARIABLES ----------------------------------------
 
 // html content of the table cart
 let htmlProductsTable = "";
+const cartTable = document.querySelector("#list-products-in-cart tbody");
+let totalDiv = document.querySelector('#total-cart td');
 
 
-// ---------------------------------------------------------------------------------------
+// =======================================================================================
 // ------------------------------------ POPULATE HTML ------------------------------------
 
 showCartProducts();
+totalDiv.textContent = euro.format(calcTotal());
 
-// Events
+
+// ------------------------------------ EVENTS ------------------------------------
 
 // Button : Select a Quantity of a product
 document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
@@ -101,8 +123,12 @@ document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
 		// Show new total of price
 		const divTotalProd = document.querySelector(`#total-produit_${idItem}`);
 		divTotalProd.textContent = euro.format(totalProduct);
+
+        //Show new Total
+        totalDiv.textContent = euro.format(calcTotal());
 	})
 );
+
 
 // Button : Delete a Product
 document.querySelectorAll('.btn-close').forEach((btnClose) => {
