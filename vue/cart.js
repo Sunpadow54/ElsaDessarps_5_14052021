@@ -11,12 +11,13 @@ let showCartProducts = () => {
                 <td scope="row">
                     <button type="button" id="delete_${productInCart._id}" class="btn-close" aria-label="Supprimer"></button>
                 </td>
-                <td class="">
+                <td>
                     <a href="produit.html?id=${productInCart._id}" class="btn">
                         <img src="${productInCart.imageUrl}" alt="voir-produit-${productInCart.name}" height="80" width="84">
                     </a>
                 </td>
                 <td class="fw-light">${productInCart.name}</td>
+                <td class="fw-light text-center">${productInCart.choice}</td>
                 <td class="fw-light text-center">${euro.format(productInCart.price)}</td>
                 <td class="fw-light text-center">
                     <div id="quantity_${productInCart._id}" class="btn-group me-2" role="group" aria-label="quantité de ${productInCart.name}">

@@ -5,14 +5,10 @@
 // content of localStorage (key: cartStorage)
 let cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
 
-// product to insert in LocalStorage
-let product = {};
-
-// ---
-
 // div to show the number of product in the cart
 let spanNbrInCart = document.querySelector('.cart-count');
 showCountCart();
+
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
@@ -22,6 +18,7 @@ const euro = new Intl.NumberFormat('fr-FR', {
     currency: 'EUR',
     minimumFractionDigits: /* 2 */0
 });
+
 
 // Function : to search a product (object) inside an array from _id parameter
 
