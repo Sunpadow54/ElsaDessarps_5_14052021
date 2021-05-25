@@ -45,9 +45,11 @@
 				<ul class="navbar-nav">
 					<!-- Cart -->
 					<li class="nav-item">
-						<a href="" class="nav-link cart position-relative active" aria-label="voir le panier"
+						<a href="panier.html" class="nav-link cart position-relative active text-center fs-5" aria-label="voir le panier"
 							title="voir le panier">
-							<span class="text-uppercase">Panier</span>
+                            <i class="fas fa-shopping-cart d-none d-md-inline align-middle fs-4"></i>
+							<span class="text-uppercase d-md-none fw-light align-middle">Panier</span>
+                            <span class="badge bg-brand-second rounded-pill fw-light align-middle cart-count">0</span>
 						</a>
 					</li>
 				</ul>
@@ -76,7 +78,7 @@
 		</nav>
 
         <!-- TABLE of products in Cart -->
-        <div id="list-products-in-cart" class="container">
+        <div id="list-products-in-cart" class="container d-flex flex-column">
             <table class="table">
                 <caption class="caption-top">Votre commande :</caption>
                 <thead>
@@ -96,9 +98,9 @@
 
             </table>
 
-            <table id="total-cart" class="table table-borderless w-25">
-                <tbody class="">
-                    <tr class="align-middle">
+            <table id="total-cart" class="table table-borderless w-25 align-self-end">
+                <tbody>
+                    <tr class="text-center">
                         <th>Total</th>
                         <!-- total price -->
                         <td></td>

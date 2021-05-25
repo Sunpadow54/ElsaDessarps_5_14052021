@@ -43,29 +43,6 @@ img {
 
 /* HEADER */
 
-/* cart icon */
-@media screen and (min-width:768px) {
-    .cart span{
-        color:transparent;
-    }
-    .cart::before {
-        content: "\f07a";
-        position: absolute;
-        top:0;
-        bottom:0;
-        right: 0;
-        left:0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Font Awesome 5 Free";
-        font-style: normal; /* fontawesome recommendation */
-        font-variant: normal; /* fontawesome recommendation */
-        text-rendering: auto; /* fontawesome recommendation */
-        font-weight: 900;
-        font-size: 1.5rem;
-    }
-}
 
 /* HOME */
 
