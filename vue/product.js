@@ -62,6 +62,8 @@ const order = () => {
     else if (!findProductById(cartStorage, idProduct)) {
         // add product to 'cartStorage' key
         addToCartStorage(product);
+        // Show new number of products in cart
+        showCountCart();
     }
 }
 

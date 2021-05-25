@@ -1,12 +1,5 @@
 // UTILITIES
 
-// convert number into euro format
-const euro = new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: /* 2 */0
-});
-
 // --- LocalStorage
 
 // content of localStorage (key: cartStorage)
@@ -15,8 +8,20 @@ let cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
 // product to insert in LocalStorage
 let product = {};
 
+// ---
+
+// div to show the number of product in the cart
+let spanNbrInCart = document.querySelector('.cart-count');
+showCountCart();
 
 // ------------------------------------ FUNCTIONS ------------------------------------
+
+// convert number into euro format
+const euro = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: /* 2 */0
+});
 
 // Function : to search a product (object) inside an array from _id parameter
 
@@ -41,3 +46,13 @@ const addToCartStorage = (productToAdd) => {
 // Function : Add to Local Storage
 
 const addToLocalStorage = () => localStorage.setItem('cartStorage', JSON.stringify(cartStorage));
+
+
+// Function : Show count of product in cart
+function showCountCart() {
+    if(cartStorage) {
+        spanNbrInCart.textContent = cartStorage.length;
+    } else {
+        spanNbrInCart.textContent = 0;
+    }
+}

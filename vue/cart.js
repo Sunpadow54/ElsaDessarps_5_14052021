@@ -52,6 +52,9 @@ function deleteProduct () {
 
     // show new total
     totalDiv.textContent = euro.format(calcTotal());
+
+    // Show new number of products in cart
+    showCountCart();
 }
 
 
