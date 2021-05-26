@@ -2,7 +2,6 @@
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
-
 // Function : show product in Html
 
 const showOneProduct = (productToShow) => {
@@ -13,23 +12,22 @@ const showOneProduct = (productToShow) => {
     productName.textContent = productToShow.name;
     productDescription.textContent = productToShow.description;
     productPrice.textContent = euro.format(productToShow.price);
-    document.querySelector('#product_choice').innerHTML= showChoice(productToShow.varnish);
-
-}
-
-function showChoice(productChoice) {
+    
+    // show varnish possible selection as radio inputs
     let htmlChoice = "";
-    for (let i in productChoice) {
+    let productChoice = productToShow.varnish;
 
+    for (let i in productChoice) {
         htmlChoice +=
             `
                 <input type="radio" id="vernis_${i}" name="varnish" value="${productChoice[i]}">
                 <label for="${productChoice[i]}">${productChoice[i]}</label>
             `
     }
-    return htmlChoice;
-}
 
+    document.querySelector('#product_choice').innerHTML = htmlChoice;
+    document.querySelector('input[name="varnish"]').checked = true;
+}
 
 
 // Function : add data to "product"
@@ -46,7 +44,7 @@ let populateProductObj = (productInfo) => {
 }
 
 
-// Function selected choice 
+// Function : find the choice that the user has choosen.
 
 let choiceSelected = () => {
     let allVarnish = document.querySelectorAll('input[name="varnish"]');
@@ -76,6 +74,7 @@ const order = () => {
         // Show new number of products in cart
         showCountCart();
     }
+
 }
 
 
@@ -101,7 +100,7 @@ let btnOrder = document.getElementById('add-cart');
 let allVarnish = document.querySelectorAll('input[name="varnish"]');
 
 // product to insert in LocalStorage
-let product = {};
+let product;
 
 // ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
@@ -112,14 +111,14 @@ let product = {};
     // Show the product / & / Add data of the product in variable
 */
 
-fetchAPI(urlApiFurniture)
-    .then(dataApi => findProductById(dataApi, idProduct))
+
+getApiData(urlApiFurniture + '/' + [idProduct])
     .then(product => {
-        showOneProduct(product)
-        document.querySelector('input[name="varnish"]').checked = true;
+        showOneProduct(product);
         populateProductObj(product);
     })
     .catch(error => { document.getElementById('product').innerHTML = error.message });
+
 
 document.getElementById('add-cart').addEventListener('click', function() {
     product.choice = choiceSelected();

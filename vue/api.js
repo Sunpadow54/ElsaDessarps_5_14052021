@@ -12,7 +12,7 @@ const urlApiTeddies = "http://localhost:3000/api/teddies";
 
 // Function : fetch Api / return data
 
-const fetchAPI = async apiUrl => {
+const getApiData = async apiUrl => {
 
     const response = await fetch(apiUrl);
 

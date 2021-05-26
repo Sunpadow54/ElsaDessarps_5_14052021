@@ -8,7 +8,7 @@
 const showAllProducts = async (urlApi) => {
 
     // fetch the api data
-    let products = await fetchAPI(urlApi);
+    let products = await getApiData(urlApi);
 
     // initialise variable for html
     let htmlListProducts = "";
