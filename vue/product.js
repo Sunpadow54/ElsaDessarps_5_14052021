@@ -8,7 +8,7 @@ const showOneProduct = (productToShow) => {
 
     // insert data of the product inside html
     productImage.src = productToShow.imageUrl;
-    productImage.alt = "Orinoco" + productToShow.name;
+    productImage.alt = "Orinoco_" + productToShow.name;
     productName.textContent = productToShow.name;
     productDescription.textContent = productToShow.description;
     productPrice.textContent = euro.format(productToShow.price);
@@ -20,13 +20,23 @@ const showOneProduct = (productToShow) => {
     for (let i in productChoice) {
         htmlChoice +=
             `
-                <input type="radio" id="vernis_${i}" name="varnish" value="${productChoice[i]}">
-                <label for="${productChoice[i]}">${productChoice[i]}</label>
-            `
+                <div class="col-6 col-sm-2">
+                    <div class="border mb-1 varnish-color">
+                        <input type="radio" id="vernis_${i}" class="position-relative w-100 h-100 d-block" name="varnish" value="${productChoice[i]}">
+                    </div>
+                    <label for="vernis_${i}" class="fw-light">${productChoice[i]}</label>
+                </div>
+            `;
     }
 
+    // populate html
     document.querySelector('#product_choice').innerHTML = htmlChoice;
+    // give first choice checked attribute (default)
     document.querySelector('input[name="varnish"]').checked = true;
+    // outline color the checked choice
+    checkedVarnishStyle();
+    // color the div
+    showColorVarnish();
 }
 
 
@@ -56,6 +66,20 @@ let choiceSelected = () => {
 }
 
 
+// Function : show which choice (varnish) is selected (=> outline)
+
+let checkedVarnishStyle = () => {
+    let allInput = document.querySelectorAll('input[name="varnish"]');
+    allInput.forEach(input => {
+        if (input.checked) {
+            input.parentNode.style.outline = '3px solid var(--color-brand-second)';
+        } else {
+            input.parentNode.style.outline = 'none';
+        }
+    })
+}
+
+
 // Function : populate LocalStorage
 
 const order = () => {
@@ -77,7 +101,7 @@ const order = () => {
 
 }
 
-
+// =======================================================================================
 // ------------------------------------ VARIABLES ------------------------------------
 
 
@@ -108,20 +132,25 @@ let product;
 /* 
 // After sucessfully Fetch from Api :
     // Find the product 
-    // Show the product / & / Add data of the product in variable
+    // Show the product / Add data of the product in variable product / Event on selected choice
 */
-
 
 getApiData(urlApiFurniture + '/' + [idProduct])
     .then(product => {
         showOneProduct(product);
         populateProductObj(product);
+        document.querySelectorAll('input[name="varnish"]').forEach(function(varnishBtn) {
+            varnishBtn.addEventListener('change', checkedVarnishStyle)
+        
+        })
+        
     })
     .catch(error => { document.getElementById('product').innerHTML = error.message });
 
+
+// ------------------------------------ EVENTS ------------------------------------
 
 document.getElementById('add-cart').addEventListener('click', function() {
     product.choice = choiceSelected();
     order();
 })
-

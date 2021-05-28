@@ -1,5 +1,36 @@
 // UTILITIES
 
+// --- Varnish colors
+
+const allVarnishs = {
+    '#D2B48C': 'Tan',
+    '#7B3F00': 'Chocolate',
+    '#55342B': 'Dark Oak',
+    '#cebb9e': 'Light Oak',
+    '#A38B5F': 'Teak',
+    '#591C08': 'Mahogany',
+    '#000000': 'Black',
+    '#FFFFFF': 'White',
+}
+
+// Function : search a color hex from allVarnish Array
+
+const findColorFromAllVarnish = (thingToFind) => {
+    return Object.keys(allVarnishs).find(key => allVarnishs[key] === thingToFind);
+}
+
+
+// Function : Add background-color hex on div from the textContent of the next Dom element.
+
+let showColorVarnish = () => {
+
+    document.querySelectorAll('.varnish-color').forEach(coloredDiv => {
+        const color = coloredDiv.nextElementSibling.textContent;
+        coloredDiv.style.backgroundColor = findColorFromAllVarnish(color);
+    })
+}
+
+
 // --- LocalStorage
 
 // content of localStorage (key: cartStorage)
@@ -25,7 +56,6 @@ const euro = new Intl.NumberFormat('fr-FR', {
 const findProductById = (arrayToCheck, thingToFind) => {
     const product = arrayToCheck.find(productInArray => productInArray._id == thingToFind);
     return product;
-
 }
 
 
@@ -47,7 +77,7 @@ const addToLocalStorage = () => localStorage.setItem('cartStorage', JSON.stringi
 
 // Function : Show count of product in cart
 function showCountCart() {
-    if(cartStorage) {
+    if (cartStorage) {
         spanNbrInCart.textContent = cartStorage.length;
     } else {
         spanNbrInCart.textContent = 0;

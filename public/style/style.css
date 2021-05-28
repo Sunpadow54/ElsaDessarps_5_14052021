@@ -2,7 +2,7 @@
 :root {
     --color-brand-primary: #f3e9f1;
     --color-brand-second: #8f5bfe;
-    --color-brand-third: #e68a07;
+    /* --color-brand-third: #e68a07; */
 }
 
 .bg-brand-primary {
@@ -10,9 +10,6 @@
 }
 .bg-brand-second {
     background-color: var(--color-brand-second);
-}
-.bg-brand-third {
-    background-color: var(--color-brand-third);
 }
 .c-brand-second {
     color: var(--color-brand-second);
@@ -38,7 +35,7 @@ body {
 
 img {
     object-fit: cover;
-    object-position: top;
+    object-position: center;
 }
 
 /* HEADER */
@@ -90,4 +87,11 @@ img {
 .btn-outline-dark:hover {
     background-color: var(--color-brand-second);
     border-color: var(--color-brand-second);
+}
+
+input[name="varnish"] {
+    opacity: 0;
+}
+.varnish-color{
+    height: 2rem;
 }

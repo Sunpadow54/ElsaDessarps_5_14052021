@@ -17,7 +17,10 @@ let showCartProducts = () => {
                     </a>
                 </td>
                 <td class="fw-light">${productInCart.name}</td>
-                <td class="fw-light text-center">${productInCart.choice}</td>
+                <td class="fw-light">
+                    <span class="rounded py-2 px-3 varnish-color"></span>
+                    <span class="py-2 px-3">${productInCart.choice}</span>
+                </td>
                 <td class="fw-light text-center">${euro.format(productInCart.price)}</td>
                 <td class="fw-light text-center">
                     <div id="quantity_${productInCart._id}" class="btn-group me-2" role="group" aria-label="quantité de ${productInCart.name}">
@@ -31,14 +34,18 @@ let showCartProducts = () => {
         `;
     };
 
-    cartTable.innerHTML = htmlProductsTable;
+    // populate html
+    document.querySelector("#list-products-in-cart tbody").innerHTML = htmlProductsTable;
+    // color the div
+    showColorVarnish();
 };
+
 
 
 // Function: Delete a Product from Cart
 
 function deleteProduct () {
-    // Delete in LocalStorage
+    // Delete product in LocalStorage
     let idItem = this.getAttribute("id").split("_")[1];
     let itemToDelete = findProductById(cartStorage, idItem);
     let indexItem = cartStorage.indexOf(itemToDelete);
@@ -47,11 +54,11 @@ function deleteProduct () {
 
     addToLocalStorage();
 
-    // Delete html
+    // Delete html showing the product
     let divToDelete = this.parentElement.parentElement;
     divToDelete.remove();
 
-    // show new total
+    // show new total price of cart
     totalDiv.textContent = euro.format(calcTotal());
 
     // Show new number of products in cart
@@ -86,7 +93,7 @@ const calcTotal = () => {
 
 // html content of the table cart
 let htmlProductsTable = "";
-const cartTable = document.querySelector("#list-products-in-cart tbody");
+// total price of the cart
 let totalDiv = document.querySelector('#total-cart td');
 
 
