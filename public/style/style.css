@@ -95,3 +95,10 @@ input[name="varnish"] {
 .varnish-color{
     height: 2rem;
 }
+
+
+/* CART page */
+
+.is-valid {
+    border-color: #ced4da!important;
+}

@@ -111,43 +111,49 @@
         </div>
 
         <!-- ORDER FORM-->
-        <form class="container fw-light mb-3">
-            <legend class="fs-4">Remplissez le formulaire de commande</legend>
+        <form id="form" class="container fw-light mb-3" novalidate>
+            <!-- <legend class="fs-4">Remplissez le formulaire de commande</legend> --> <!-- not correct for w3c -->
 
             <div class="row mb-2 g-2">
-                <div class="col-md-4 mb-2">
-                    <label for="lastname" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="lastname" placeholder="Nom" required>
+                <div class="col-md-4 mb-1">
+                    <label for="last-name" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="last-name" placeholder="Nom">
+                    <small class="invalid-feedback"></small>
                 </div>
-                <div class="col-md-3 mb-2">
-                    <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" placeholder="Prénom" required>
+                <div class="col-md-3 mb-1">
+                    <label for="first-name" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="first-name" placeholder="Prénom">
+                    <small class="invalid-feedback"></small>
                 </div>
             </div>
 
-            <div class="col-md-7 mb-2">
-                <label for="emailAdress" class="form-label">Adresse e-mail</label>
-                <input type="email" class="form-control" id="emailAdress" placeholder="exemple@domaine.com" required>
+            <div class="col-md-7 mb-1">
+                <label for="email-adress" class="form-label">Adresse e-mail</label>
+                <input type="email" class="form-control" id="email-adress" placeholder="exemple@domaine.com">
+                <small class="invalid-feedback"></small>
             </div>
 
-            <div class="col-md-7 mb-2">
+            <div class="col-md-7 mb-1">
                 <label for="adress" class="form-label">Adresse</label>
-                <input type="text" class="form-control" id="adress" placeholder="Adresse" required>
+                <input type="text" class="form-control" id="adress" placeholder="Adresse">
+                <small class="invalid-feedback"></small>
             </div>
 
             <div class="row mb-2 g-2">
 
-                <div class="col-md-1 mb-2">
-                    <label for="postcode" class="form-label">Code Postal</label>
-                    <input type="text" class="form-control" id="postcode" placeholder="" required>
+                <div class="col-md-2 mb-1">
+                    <label for="post-code" class="form-label">Code Postal</label>
+                    <input type="text" class="form-control" id="post-code">
+                    <small class="invalid-feedback"></small>
                 </div>
-                <div class="col-md-6 mb-2">
+                <div class="col-md-5 mb-1">
                     <label for="city" class="form-label">Ville</label>
-                    <input type="text" class="form-control" id="city" placeholder="Ville" required>
+                    <input type="text" class="form-control" id="city" placeholder="Ville">
+                    <small class="invalid-feedback"></small>
                 </div>
             </div>
 
-            <button type="submit" class="mx-auto col-md-3 btn btn-outline-dark">Commander</button>
+            <button type="submit" id="order-btn"class="mx-auto col-md-3 btn btn-outline-dark mt-3">Commander</button>
         </form>
 
     </main>
@@ -160,6 +166,7 @@
     <!-- JavaScript vue -->
     <script src="vue/utils.js"></script>
     <script src="vue/cart.js"></script>
+    <script src="vue/order.js"></script>
 
     <!-- JavaScript Bootstrapp -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
