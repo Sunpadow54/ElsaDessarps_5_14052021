@@ -87,7 +87,7 @@ let checkedVarnishStyle = () => {
 
 const addToCart = () => {
     // if cartStorage key is null
-    if (!localStorage.cartStorage) {
+    if (!localStorage.myCart) {
         // initialise 'cartStorage' as array and push 'product' object inside 
         cartStorage = [];
         // add product to 'cartStorage' key
@@ -107,7 +107,7 @@ const addToCartStorage = (productToAdd) => {
     // Add product to array cartStorage
     cartStorage.push(productToAdd);
     // push the array to LocalStorage on 'cartStorage' key
-    sendToLocalStorage();
+    sendToLocalStorage('myCart', cartStorage);
     // Show new number of products in cart
     showCountCart();
 }

@@ -3,18 +3,6 @@
 // ------------------------------------ FUNCTIONS ------------------------------------
 
 
-// Function
-let productsSelected = () => {
-
-    for (productInCart of cartStorage) {
-        let productRequest = {
-            id: productInCart._id,
-            quantity: productInCart.quantity,
-            choice: productInCart.choice
-        };
-        productsOrder.push(productRequest);
-    }
-}
 
 
 // Function : test regexs
@@ -46,7 +34,7 @@ function showSuccesInput(input) {
 }
 
 
-//Function : check if the form is valid (and leave msg for each bad input)
+// Function : check if the form is valid (and leave msg for each bad input)
 
 function checkInputValidity() {
     let formIsValid = true;
@@ -101,6 +89,31 @@ function checkInputValidity() {
     return formIsValid;
 }
 
+// Function : to create an object of all contact infos
+
+const getContactInfo = () => {
+    const contact = {
+        lastName: document.getElementById('last-name').value,
+        firstName: document.getElementById('first-name').value,
+        email: document.getElementById('email-adress').value,
+        address: document.getElementById('adress').value,
+        city: document.getElementById('post-code').value + ' ' + document.getElementById('city').value,
+    }
+    return contact
+}
+
+// Function : to create an array of all products id of the cart
+
+let getProductsBought = () => {
+
+    let productsWanted = [];
+    for (productInCart of cartStorage) {
+        productsWanted.push(productInCart._id);
+    }
+    return productsWanted;
+}
+
+
 
 
 // =======================================================================================
@@ -125,4 +138,22 @@ const regexNoSpecial = /^[\w\u00C0-\u00FF -]+$/;
 document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
     checkInputValidity();
+
+    // if form contact is ok and there is products in the cart
+    if (checkInputValidity() && cartStorage.length !== 0) {
+        postApiData(urlApiFurniture, getContactInfo(), getProductsBought())
+            .then(res => {
+                deleteLocalStorageItem('myCart');
+                sendToLocalStorage('successOrder', res);
+                document.location.href='commande.html?orderId=' + res.orderId;
+            })
+            .catch(error => console.log(error));
+
+    }
+    // if cart is empty
+    if (cartStorage.length === 0) {
+        console.log('vous navez aucun produit dans votre panier');
+    }
 });
+
+

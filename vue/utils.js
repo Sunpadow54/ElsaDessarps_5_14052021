@@ -6,12 +6,14 @@
 
 // content of localStorage (key: cartStorage)
 
-let cartStorage = JSON.parse(localStorage.getItem('cartStorage'));
+let cartStorage = JSON.parse(localStorage.getItem('myCart'));
 
 
 // Function : Add to Local Storage
 
-const sendToLocalStorage = () => localStorage.setItem('cartStorage', JSON.stringify(cartStorage));
+const sendToLocalStorage = (item, itemToSend) => localStorage.setItem(item, JSON.stringify(itemToSend));
+
+const deleteLocalStorageItem = item => localStorage.removeItem(item);
 
 
 

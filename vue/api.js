@@ -30,3 +30,26 @@ const getApiData = async apiUrl => {
 
     return data;
 }
+
+// Function : send data to API and get command number
+
+const postApiData = async (apiUrl, contactForm, productsBought) => {
+
+    const dataOrder = {
+        contact: contactForm,
+        products: productsBought,
+    };
+
+    const response = await fetch(apiUrl + '/order', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(dataOrder)
+    });
+
+    const content = await response.json();
+
+    return content;
+}
