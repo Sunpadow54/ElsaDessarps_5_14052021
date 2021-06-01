@@ -52,7 +52,7 @@ function deleteProduct () {
 
     cartStorage.splice(indexItem, 1);
 
-    addToLocalStorage();
+    sendToLocalStorage();
 
     // Delete html showing the product
     let divToDelete = this.parentElement.parentElement;
@@ -122,7 +122,7 @@ document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
 
 		//Change in local Storage
 		productChanged.quantity = Math.max(newQty, 1);
-		addToLocalStorage();
+		sendToLocalStorage();
 
 		// Show new quantity
         const spanQty = document.querySelector(`#quantity_${idItem} span`);

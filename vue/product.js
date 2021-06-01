@@ -6,12 +6,14 @@
 
 const showOneProduct = (productToShow) => {
 
+    let productImage = document.querySelector('#product img');
+
     // insert data of the product inside html
     productImage.src = productToShow.imageUrl;
     productImage.alt = "Orinoco_" + productToShow.name;
-    productName.textContent = productToShow.name;
-    productDescription.textContent = productToShow.description;
-    productPrice.textContent = euro.format(productToShow.price);
+    document.querySelector('#product_name').textContent = productToShow.name;
+    document.querySelector('#product_text').textContent = productToShow.description;
+    document.querySelector('#product_price').textContent = euro.format(productToShow.price);
     
     // show varnish possible selection as radio inputs
     let htmlChoice = "";
@@ -80,9 +82,10 @@ let checkedVarnishStyle = () => {
 }
 
 
+
 // Function : populate LocalStorage
 
-const order = () => {
+const addToCart = () => {
     // if cartStorage key is null
     if (!localStorage.cartStorage) {
         // initialise 'cartStorage' as array and push 'product' object inside 
@@ -95,11 +98,20 @@ const order = () => {
     else if (!findProductById(cartStorage, idProduct)) {
         // add product to 'cartStorage' key
         addToCartStorage(product);
-        // Show new number of products in cart
-        showCountCart();
     }
-
 }
+
+// Function : Add to LocalStorage
+
+const addToCartStorage = (productToAdd) => {
+    // Add product to array cartStorage
+    cartStorage.push(productToAdd);
+    // push the array to LocalStorage on 'cartStorage' key
+    sendToLocalStorage();
+    // Show new number of products in cart
+    showCountCart();
+}
+
 
 // =======================================================================================
 // ------------------------------------ VARIABLES ------------------------------------
@@ -109,19 +121,6 @@ const order = () => {
 const urlParameters = (new URL(document.location)).searchParams;
 // id of the product
 let idProduct = urlParameters.get('id');
-
-// DOM product
-let productImage = document.querySelector('#product img');
-let productName = document.querySelector('#product_name');
-let productDescription = document.querySelector('#product_text');
-let productPrice = document.querySelector('#product_price');
-
-
-// button for adding the product in the cart
-let btnOrder = document.getElementById('add-cart');
-
-// allchoice = 
-let allVarnish = document.querySelectorAll('input[name="varnish"]');
 
 // product to insert in LocalStorage
 let product;
@@ -152,5 +151,5 @@ getApiData(urlApiFurniture + '/' + [idProduct])
 
 document.getElementById('add-cart').addEventListener('click', function() {
     product.choice = choiceSelected();
-    order();
+    addToCart();
 })
