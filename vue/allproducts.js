@@ -25,7 +25,7 @@ const showAllProducts = async (urlApi) => {
             `
                 <li class="col">
                     <article>
-                        <a href="produit.html?id=${product._id}" class="card h-100 text-center text-decoration-none text-reset">
+                        <a href="/public/page/produit.html?id=${product._id}" class="card h-100 text-center text-decoration-none text-reset">
                             <img src="${product.imageUrl}" class="card-img-top position-relative" alt="${product.name} Orinoco" height="400" width="415" />
                             <div class="card-body">
                                 <h2 class="card-title h5">${product.name}</h2>

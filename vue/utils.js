@@ -95,19 +95,19 @@ class MsgPopup {
             case 'alreadyIn' :
                 this.txt = 'Ce produit est déjà dans votre panier';
                 this.txtLink = 'Continuez vos achats';
-                this.link = 'index.html';
+                this.href = '/index.html';
                 break;
         
             case 'emptyCart' :
                 this.txt = 'Vous n\'avez aucun produit dans votre panier';
                 this.txtLink = 'Allez voir nos offres !';
-                this.link = 'index.html';
+                this.href = '/index.html';
                 break;
             
             case 'successAddCart' :
                 this.txt = 'Vous avez bien ajouté ce produit à votre panier !';
                 this.txtLink = 'Voir votre panier';
-                this.link = 'panier.html';
+                this.href = '/public/page/panier.html';
                 break;
         }
     }
@@ -130,7 +130,7 @@ function createPopup(btn, msgFor) {
                     ${msg.txt}
                 </div>
                 <div class="toast-body text-center">
-                    <a href="${msg.link}" class="c-brand-second">${msg.txtLink}</a>
+                    <a href="${msg.href}" class="c-brand-second">${msg.txtLink}</a>
                 </div>
             `;
 

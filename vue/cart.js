@@ -12,7 +12,7 @@ let showCartProducts = () => {
                     <button type="button" id="delete_${productInCart._id}" class="btn-close" aria-label="Supprimer"></button>
                 </td>
                 <td class="">
-                    <a href="produit.html?id=${productInCart._id}" class="btn">
+                    <a href="/public/page/produit.html?id=${productInCart._id}" class="btn">
                         <img src="${productInCart.imageUrl}" alt="voir-produit-${productInCart.name}" height="80" width="84">
                     </a>
                 </td>

@@ -146,7 +146,7 @@ document.getElementById('form').addEventListener('submit', (event) => {
                 // add the response to localStorage
                 sendToLocalStorage('successOrder', res);
                 // redirection
-                document.location.href='commande.html?orderId=' + res.orderId;
+                document.location.href='/public/page/commande.html?orderId=' + res.orderId;
             })
             .catch(error => console.log(error));
     } 
