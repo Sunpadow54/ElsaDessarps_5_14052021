@@ -24,12 +24,13 @@ const getApiData = async apiUrl => {
     const data = await response.json();
 
     if (data === 0) {
-        message = `Désolé, il n'existe aucun produit de ce type ( erreur status: ${response.status} )`;
+        let message = `Désolé, il n'existe aucun produit de ce type ( erreur status: ${response.status} )`;
         throw new Error(message);
     }
 
     return data;
 }
+
 
 // Function : send data to API and get command number
 
@@ -49,7 +50,17 @@ const postApiData = async (apiUrl, contactForm, productsBought) => {
             body: JSON.stringify(dataOrder)
     });
 
-    const content = await response.json();
+    if (!response.ok) {
+        let message = `Désolé, il est impossible d'accéder à l'API. ( erreur status: ${response.status} )`;
+        throw new Error(message);
+    }
 
-    return content;
+    const data = await response.json();
+
+    if (data === 0) {
+        let message = `Désolé, notre service de commande n'est pas disponible pour l'instant. ( erreur status: ${response.status} )`;
+        throw new Error(message);
+    }
+
+    return data;
 }

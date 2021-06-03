@@ -10,6 +10,11 @@ const showAllProducts = async (urlApi) => {
     // fetch the api data
     let products = await getApiData(urlApi);
 
+    if (products === 0) {
+        let message = `Désolé, nous n'avons plus de produits de ce type.`;
+        throw new Error(message);
+    }
+    
     // initialise variable for html
     let htmlListProducts = "";
 

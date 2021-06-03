@@ -8,6 +8,7 @@ const showOneProduct = (productToShow) => {
 
     let productImage = document.querySelector('#product img');
 
+
     // insert data of the product inside html
     productImage.src = productToShow.imageUrl;
     productImage.alt = "Orinoco_" + productToShow.name;
@@ -71,8 +72,7 @@ let choiceSelected = () => {
 // Function : show which choice (varnish) is selected (=> outline)
 
 let checkedVarnishStyle = () => {
-    let allInput = document.querySelectorAll('input[name="varnish"]');
-    allInput.forEach(input => {
+    document.querySelectorAll('input[name="varnish"]').forEach(input => {
         if (input.checked) {
             input.parentNode.style.outline = '3px solid var(--color-brand-second)';
         } else {
@@ -125,6 +125,8 @@ let idProduct = urlParameters.get('id');
 // product to insert in LocalStorage
 let product;
 
+let btnAddToCart = document.getElementById('add-cart');
+
 // ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
 
@@ -149,7 +151,14 @@ getApiData(urlApiFurniture + '/' + [idProduct])
 
 // ------------------------------------ EVENTS ------------------------------------
 
-document.getElementById('add-cart').addEventListener('click', function() {
-    product.choice = choiceSelected();
-    addToCart();
+btnAddToCart.addEventListener('click', function() {
+    // if localStorage contain the product
+    if (cartStorage !== null && findProductById(cartStorage, idProduct)) {
+        createPopup(this, 'alreadyIn');
+    } 
+    else {
+        product.choice = choiceSelected();
+        addToCart();
+        createPopup(this, 'successAddCart');
+    }
 })

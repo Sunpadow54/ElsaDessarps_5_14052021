@@ -99,9 +99,12 @@ let totalDiv = document.querySelector('#total-cart td');
 
 // =======================================================================================
 // ------------------------------------ POPULATE HTML ------------------------------------
+if (cartStorage) {
+    showCartProducts();
+    totalDiv.textContent = euro.format(calcTotal());
+}
 
-showCartProducts();
-totalDiv.textContent = euro.format(calcTotal());
+
 
 
 // ------------------------------------ EVENTS ------------------------------------
@@ -145,3 +148,12 @@ document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
 document.querySelectorAll('.btn-close').forEach((btnClose) => {
     btnClose.addEventListener('click', deleteProduct)
 });
+
+
+// Button : order (get msg if cart is empty)
+document.getElementById('order-btn').addEventListener('click', function() {
+    // if cart is empty
+    if (cartStorage === null || cartStorage.length ===0) {
+        createPopup(this, 'emptyCart');
+    }
+})

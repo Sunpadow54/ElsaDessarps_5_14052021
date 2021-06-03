@@ -83,3 +83,60 @@ let showColorVarnish = () => {
         coloredDiv.style.backgroundColor = findColorFromAllVarnish(color);
     })
 }
+
+
+// ------------------ Msg Popup
+
+// Class for creating popup messages
+
+class MsgPopup {
+    constructor(msgFor) {
+        switch (msgFor) {
+            case 'alreadyIn' :
+                this.txt = 'Ce produit est déjà dans votre panier';
+                this.txtLink = 'Continuez vos achats';
+                this.link = 'index.html';
+                break;
+        
+            case 'emptyCart' :
+                this.txt = 'Vous n\'avez aucun produit dans votre panier';
+                this.txtLink = 'Allez voir nos offres !';
+                this.link = 'index.html';
+                break;
+            
+            case 'successAddCart' :
+                this.txt = 'Vous avez bien ajouté ce produit à votre panier !';
+                this.txtLink = 'Voir votre panier';
+                this.link = 'panier.html';
+                break;
+        }
+    }
+}
+
+
+// Function to create popup message div (& disable the btn)
+
+function createPopup(btn, msgFor) {
+
+    // use Class MsgPopup to get the correct msgs
+    let msg = new MsgPopup(msgFor);
+
+    // create popup div
+    let popup = document.createElement('div');
+    popup.classList.add('toast' , 'show', 'position-absolute', 'bottom-0' , 'start-50' , 'translate-middle-x');
+    let htmlPopup = 
+            `
+                <div class="toast-header justify-content-center">
+                    ${msg.txt}
+                </div>
+                <div class="toast-body text-center">
+                    <a href="${msg.link}" class="c-brand-second">${msg.txtLink}</a>
+                </div>
+            `;
+
+    popup.innerHTML = htmlPopup;
+    document.querySelector('main').appendChild(popup);
+
+    // disable the btn 
+    btn.disabled = true;
+}

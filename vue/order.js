@@ -3,8 +3,6 @@
 // ------------------------------------ FUNCTIONS ------------------------------------
 
 
-
-
 // Function : test regexs
 
 const regexTesting = (thingToTest, regex) => {
@@ -89,6 +87,7 @@ function checkInputValidity() {
     return formIsValid;
 }
 
+
 // Function : to create an object of all contact infos
 
 const getContactInfo = () => {
@@ -133,27 +132,22 @@ const regexNoSpecial = /^[\w\u00C0-\u00FF -]+$/;
 
 // ------------------------------------ EVENTS ------------------------------------
 
-// On submit order
+// On submit 
 
 document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
     checkInputValidity();
 
-    // if form contact is ok and there is products in the cart
+    // if form contact is ok and there is products in the cart => send to api
     if (checkInputValidity() && cartStorage.length !== 0) {
         postApiData(urlApiFurniture, getContactInfo(), getProductsBought())
             .then(res => {
                 deleteLocalStorageItem('myCart');
+                // add the response to localStorage
                 sendToLocalStorage('successOrder', res);
+                // redirection
                 document.location.href='commande.html?orderId=' + res.orderId;
             })
             .catch(error => console.log(error));
-
-    }
-    // if cart is empty
-    if (cartStorage.length === 0) {
-        console.log('vous navez aucun produit dans votre panier');
-    }
+    } 
 });
-
-
