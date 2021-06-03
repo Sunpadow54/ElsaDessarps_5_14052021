@@ -98,3 +98,9 @@ input[name="varnish"] {
 .is-valid {
 	border-color: #ced4da !important;
 }
+
+
+/* --- Footer */
+footer a:hover {
+    text-decoration: underline;
+}
