@@ -7,11 +7,11 @@ let showCartProducts = () => {
 	for (let productInCart of cartStorage) {
         htmlProductsTable +=
             `
-            <tr class="align-middle">
-                <td>
+            <tr class="align-middle d-flex flex-column  align-items-center d-md-table-row mb-4 gap-2 container-sm">
+                <td class="align-self-end">
                     <button type="button" id="delete_${productInCart._id}" class="btn-close" aria-label="Supprimer"></button>
                 </td>
-                <td>
+                <td class="">
                     <a href="produit.html?id=${productInCart._id}" class="btn">
                         <img src="${productInCart.imageUrl}" alt="voir-produit-${productInCart.name}" height="80" width="84">
                     </a>
@@ -19,9 +19,9 @@ let showCartProducts = () => {
                 <td class="fw-light">${productInCart.name}</td>
                 <td class="fw-light">
                     <span class="rounded py-2 px-3 varnish-color"></span>
-                    <span class="py-2 px-3">${productInCart.choice}</span>
+                    <span class="py-2 px-3 text-nowrap">${productInCart.choice}</span>
                 </td>
-                <td class="fw-light text-center">${euro.format(productInCart.price)}</td>
+                <td class="fw-light text-center d-none d-md-table-cell">${euro.format(productInCart.price)}</td>
                 <td class="fw-light text-center">
                     <div id="quantity_${productInCart._id}" class="btn-group me-2" role="group" aria-label="quantité de ${productInCart.name}">
                         <button type="button" class="btn btn-lg btn-light fw-light quantity" aria-label="enlever">-</button>

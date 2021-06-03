@@ -63,10 +63,10 @@
     </section>
 
     <!-- MAIN -->
-    <main class="container flex-shrink-0 position-relative">
+    <main class="container-fluid container-lg flex-shrink-0 position-relative">
 
         <!-- nav : where am I ?-->
-        <nav class="container py-2" aria-label="breadcrumb">
+        <nav class="container-fluid py-2" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a class="link-dark text-decoration-none" href="index.html">Produits</a>
@@ -78,15 +78,15 @@
         </nav>
 
         <!-- TABLE of products in Cart -->
-        <div id="list-products-in-cart" class="container d-flex flex-column">
+        <div id="list-products-in-cart" class="container-fluid container-lg">
             <table class="table">
                 <caption class="caption-top">Votre commande :</caption>
                 <thead>
-                    <tr class="align-middle text-center">
+                    <tr class="align-middle text-center d-none d-md-table-row">
                         <th scope="col" class="fw-light"></th>
                         <th scope="col" class="fw-light"></th>
                         <th scope="col" class="fw-light"></th>
-                        <th scope="col" class="fw-light ">Vernis</th>
+                        <th scope="col" class="fw-light">Vernis</th>
                         <th scope="col" class="fw-light">Prix</th>
                         <th scope="col" class="fw-light">Quantité</th>
                         <th scope="col" class="fw-light">Sous-total</th>
@@ -101,7 +101,7 @@
 
             <table id="total-cart" class="table table-borderless w-25 align-self-end">
                 <tbody>
-                    <tr class="text-center">
+                    <tr class="text-center total-price">
                         <th>Total</th>
                         <!-- total price -->
                         <td></td>
@@ -111,7 +111,7 @@
         </div>
 
         <!-- ORDER FORM-->
-        <form id="form" class="container fw-light mb-3" novalidate>
+        <form id="form" class="container-fluid container-lg fw-light mb-3" novalidate>
             <fieldset class="bg-brand-primary px-3 py-4">
                 <legend class="fs-4 mb-4">Remplissez le formulaire de commande</legend>
                 <div class="row mb-2 g-2">
@@ -152,7 +152,8 @@
                         <small class="invalid-feedback"></small>
                     </div>
                 </div>
-                <button type="submit" id="order-btn" class="mx-auto col-md-3 btn btn-outline-dark mt-3">Commander</button>
+                <button type="submit" id="order-btn"
+                    class="mx-auto col-md-3 btn btn-outline-dark mt-3">Commander</button>
             </fieldset>
         </form>
     </main>
