@@ -49,6 +49,8 @@ console when the server starts, e.g. `Listening on port 3001`.)
 
 ## Auteur
 
+Sunpadow - elsa dessarps - 2021
+
 -----------------
 
 ![visuel Orinoco](/public/img/readme_visual_orinoco-3.jpg "visual_orinoco_3")
