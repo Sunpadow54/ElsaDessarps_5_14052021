@@ -23,12 +23,12 @@ const showOneProduct = (productToShow) => {
     for (let i in productChoice) {
         htmlChoice +=
             `
-                <div class="col-6 col-sm-2">
+                <li class="col-6 col-sm-2">
                     <div class="border mb-1 varnish-color">
                         <input type="radio" id="vernis_${i}" class="position-relative w-100 h-100 d-block" name="varnish" value="${productChoice[i]}">
                     </div>
                     <label for="vernis_${i}" class="fw-light">${productChoice[i]}</label>
-                </div>
+                </li>
             `;
     }
 

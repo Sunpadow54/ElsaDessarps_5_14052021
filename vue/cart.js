@@ -8,7 +8,7 @@ let showCartProducts = () => {
         htmlProductsTable +=
             `
             <tr class="align-middle">
-                <td scope="row">
+                <td>
                     <button type="button" id="delete_${productInCart._id}" class="btn-close" aria-label="Supprimer"></button>
                 </td>
                 <td>

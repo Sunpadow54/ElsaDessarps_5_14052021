@@ -112,48 +112,48 @@
 
         <!-- ORDER FORM-->
         <form id="form" class="container fw-light mb-3" novalidate>
-            <!-- <legend class="fs-4">Remplissez le formulaire de commande</legend> --> <!-- not correct for w3c -->
+            <fieldset class="bg-brand-primary px-3 py-4">
+                <legend class="fs-4 mb-4">Remplissez le formulaire de commande</legend>
+                <div class="row mb-2 g-2">
+                    <div class="col-md-4 mb-1">
+                        <label for="last-name" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="last-name" placeholder="Nom">
+                        <small class="invalid-feedback"></small>
+                    </div>
+                    <div class="col-md-3 mb-1">
+                        <label for="first-name" class="form-label">Prénom</label>
+                        <input type="text" class="form-control" id="first-name" placeholder="Prénom">
+                        <small class="invalid-feedback"></small>
+                    </div>
+                </div>
 
-            <div class="row mb-2 g-2">
-                <div class="col-md-4 mb-1">
-                    <label for="last-name" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="last-name" placeholder="Nom">
+                <div class="col-md-7 mb-1">
+                    <label for="email-adress" class="form-label">Adresse e-mail</label>
+                    <input type="email" class="form-control" id="email-adress" placeholder="exemple@domaine.com">
                     <small class="invalid-feedback"></small>
                 </div>
-                <div class="col-md-3 mb-1">
-                    <label for="first-name" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="first-name" placeholder="Prénom">
+
+                <div class="col-md-7 mb-1">
+                    <label for="adress" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="adress" placeholder="Adresse">
                     <small class="invalid-feedback"></small>
                 </div>
-            </div>
 
-            <div class="col-md-7 mb-1">
-                <label for="email-adress" class="form-label">Adresse e-mail</label>
-                <input type="email" class="form-control" id="email-adress" placeholder="exemple@domaine.com">
-                <small class="invalid-feedback"></small>
-            </div>
+                <div class="row mb-2 g-2">
 
-            <div class="col-md-7 mb-1">
-                <label for="adress" class="form-label">Adresse</label>
-                <input type="text" class="form-control" id="adress" placeholder="Adresse">
-                <small class="invalid-feedback"></small>
-            </div>
-
-            <div class="row mb-2 g-2">
-
-                <div class="col-md-2 mb-1">
-                    <label for="post-code" class="form-label">Code Postal</label>
-                    <input type="text" class="form-control" id="post-code">
-                    <small class="invalid-feedback"></small>
+                    <div class="col-md-2 mb-1">
+                        <label for="post-code" class="form-label">Code Postal</label>
+                        <input type="text" class="form-control" id="post-code">
+                        <small class="invalid-feedback"></small>
+                    </div>
+                    <div class="col-md-5 mb-1">
+                        <label for="city" class="form-label">Ville</label>
+                        <input type="text" class="form-control" id="city" placeholder="Ville">
+                        <small class="invalid-feedback"></small>
+                    </div>
                 </div>
-                <div class="col-md-5 mb-1">
-                    <label for="city" class="form-label">Ville</label>
-                    <input type="text" class="form-control" id="city" placeholder="Ville">
-                    <small class="invalid-feedback"></small>
-                </div>
-            </div>
-            <button type="submit" id="order-btn"class="mx-auto col-md-3 btn btn-outline-dark mt-3">Commander</button>
-
+                <button type="submit" id="order-btn" class="mx-auto col-md-3 btn btn-outline-dark mt-3">Commander</button>
+            </fieldset>
         </form>
     </main>
 
