@@ -37,6 +37,7 @@ server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.)
 
 ***
+![visuel Orinoco](/public/img/readme_visual_orinoco-2.jpg "visual_orinoco_2")
 
 ## Made with
 
@@ -49,8 +50,6 @@ console when the server starts, e.g. `Listening on port 3001`.)
 ## Auteur
 
 -----------------
-
-![visuel Orinoco](/public/img/readme_visual_orinoco-2.jpg "visual_orinoco_2")
 
 ![visuel Orinoco](/public/img/readme_visual_orinoco-3.jpg "visual_orinoco_3")
 
