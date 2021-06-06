@@ -5,7 +5,7 @@
 // Show the products in cart
 let showCartProducts = () => {
 	for (let productInCart of cartStorage) {
-        htmlProductsTable +=
+        document.querySelector("#list-products-in-cart tbody").innerHTML +=
             `
             <tr class="align-middle d-flex flex-column  align-items-center d-md-table-row mb-4 gap-2 container-sm">
                 <td class="align-self-end">
@@ -34,8 +34,6 @@ let showCartProducts = () => {
         `;
     };
 
-    // populate html
-    document.querySelector("#list-products-in-cart tbody").innerHTML = htmlProductsTable;
     // color the div
     showColorVarnish();
 };
@@ -76,23 +74,23 @@ const calcTotalproduct = (product) => {
 // Function : calcul the summ of products
 
 const calcTotal = () => {
-
     let summTotal = 0;
-
     for (let product of cartStorage) {
-
-        productPrice = calcTotalproduct(product);
-        summTotal = summTotal + productPrice;
+        summTotal = summTotal + calcTotalproduct(product);
     }
     return summTotal;
 }
 
 
+
+function qty() {
+    console.log(this);
+}
+
 // =======================================================================================
 // ------------------------------------ VARIABLES ----------------------------------------
 
-// html content of the table cart
-let htmlProductsTable = "";
+
 // total price of the cart
 let totalDiv = document.querySelector('#total-cart td');
 
@@ -105,15 +103,13 @@ if (cartStorage) {
 }
 
 
-
-
 // ------------------------------------ EVENTS ------------------------------------
 
 // Button : Select a Quantity of a product
 document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
 	buttonAdd.addEventListener('click', function () {
-
-        // Find the product
+        qty();
+        // Find the product in cartStorage
 		const idItem = this.parentElement.getAttribute("id").split("_")[1];
         let productChanged = findProductById(cartStorage, idItem);
 
@@ -123,7 +119,7 @@ document.querySelectorAll("button.quantity").forEach((buttonAdd) =>
 				? parseInt(productChanged.quantity) + 1
 				: parseInt(productChanged.quantity) - 1;
 
-		//Change in local Storage
+		// Change in local Storage
 		productChanged.quantity = Math.max(newQty, 1);
 		sendToLocalStorage('myCart', cartStorage);
 
@@ -150,7 +146,7 @@ document.querySelectorAll('.btn-close').forEach((btnClose) => {
 });
 
 
-// Button : order (get msg if cart is empty)
+// Button : order messages (if cart is empty)
 document.getElementById('order-btn').addEventListener('click', function() {
     // if cart is empty
     if (cartStorage === null || cartStorage.length ===0) {

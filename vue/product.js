@@ -7,8 +7,6 @@
 const showOneProduct = (productToShow) => {
 
     let productImage = document.querySelector('#product img');
-
-
     // insert data of the product inside html
     productImage.src = productToShow.imageUrl;
     productImage.alt = "Orinoco_" + productToShow.name;
@@ -17,11 +15,9 @@ const showOneProduct = (productToShow) => {
     document.querySelector('#product_price').textContent = euro.format(productToShow.price);
     
     // show varnish possible selection as radio inputs
-    let htmlChoice = "";
     let productChoice = productToShow.varnish;
-
     for (let i in productChoice) {
-        htmlChoice +=
+        document.querySelector('#product_choice').innerHTML +=
             `
                 <li class="col-6 col-sm-2">
                     <div class="border mb-1 varnish-color">
@@ -32,8 +28,6 @@ const showOneProduct = (productToShow) => {
             `;
     }
 
-    // populate html
-    document.querySelector('#product_choice').innerHTML = htmlChoice;
     // give first choice checked attribute (default)
     document.querySelector('input[name="varnish"]').checked = true;
     // outline color the checked choice

@@ -14,14 +14,11 @@ const showAllProducts = async (urlApi) => {
         let message = `Désolé, nous n'avons plus de produits de ce type.`;
         throw new Error(message);
     }
-    
-    // initialise variable for html
-    let htmlListProducts = "";
 
     // loop inside the data of the API
     for (let product of products) {
-        // insert all data of the product inside variable html
-        htmlListProducts +=
+        // insert all data of the product inside html
+        document.getElementById('list-products').innerHTML +=
             `
                 <li class="col">
                     <article>
@@ -36,9 +33,6 @@ const showAllProducts = async (urlApi) => {
                 </li>
             `;
     }
-
-    // insert html into bloc
-    document.getElementById('list-products').innerHTML = htmlListProducts; // insert html
 }
 
 
