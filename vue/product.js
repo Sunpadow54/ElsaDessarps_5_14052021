@@ -40,8 +40,7 @@ const showOneProduct = (productToShow) => {
 // Function : add data to "product"
 
 let populateProductObj = (productInfo) => {
-    
-    product = {
+    thisProduct = {
         _id: productInfo._id,
         name: productInfo.name,
         imageUrl: productInfo.imageUrl,
@@ -77,50 +76,38 @@ let checkedVarnishStyle = () => {
 }
 
 
-
-// Function : populate LocalStorage
+// Function : send to 'myCart' in LocalStorage 
 
 const addToCart = () => {
-    // if cartStorage key is null
+    // if cartStorage key is null initialise 'cartStorage as array 
     if (!localStorage.myCart) {
-        // initialise 'cartStorage' as array and push 'product' object inside 
         cartStorage = [];
-        // add product to 'cartStorage' key
-        addToCartStorage(product);
     }
 
-    // else if the product is not already in the localStorage 'cartStorage'
-    else if (!findProductById(cartStorage, idProduct)) {
-        // add product to 'cartStorage' key
-        addToCartStorage(product);
+    // if the product is not already in the localStorage 'cartStorage' add the product in localStorage
+    if (!findProductById(cartStorage, idProduct)) {
+        // Add product to array cartStorage
+        cartStorage.push(thisProduct);
+        // push the array to LocalStorage on 'cartStorage' key
+        sendToLocalStorage('myCart', cartStorage);
+        // Show new number of products in cart
+        showCountCart();
     }
-}
-
-// Function : Add to LocalStorage
-
-const addToCartStorage = (productToAdd) => {
-    // Add product to array cartStorage
-    cartStorage.push(productToAdd);
-    // push the array to LocalStorage on 'cartStorage' key
-    sendToLocalStorage('myCart', cartStorage);
-    // Show new number of products in cart
-    showCountCart();
 }
 
 
 // =======================================================================================
-// ------------------------------------ VARIABLES ------------------------------------
 
+// ------------------------------------ VARIABLES ------------------------------------
 
 // Get id_product from url
 const urlParameters = (new URL(document.location)).searchParams;
 // id of the product
-let idProduct = urlParameters.get('id');
+const idProduct = urlParameters.get('id');
 
 // product to insert in LocalStorage
-/* let product; */
+let thisProduct;
 
-/* let btnAddToCart = document.getElementById('add-cart'); */
 
 // ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
@@ -128,23 +115,22 @@ let idProduct = urlParameters.get('id');
 /* 
 // After sucessfully Fetch from Api :
     // Find the product 
-    // Show the product / Add data of the product in variable product / Event on selected choice
+    // Show the product / Add data of the product in variable thisProduct / Event on selected choice
 */
 
 getApiData(urlApiFurniture + '/' + [idProduct])
     .then(product => {
         showOneProduct(product);
         populateProductObj(product);
-        
         document.querySelectorAll('input[name="varnish"]').forEach(function(varnishBtn) {
             varnishBtn.addEventListener('change', checkedVarnishStyle)
-        
-        })
+        });
         
     })
     .catch(error => { document.getElementById('product-info').innerHTML = error.message });
 
-   
+
+// ---------------------------------------------------------------------------------------
 // ------------------------------------ EVENTS ------------------------------------
 
 document.getElementById('add-cart').addEventListener('click', function() {
@@ -153,7 +139,7 @@ document.getElementById('add-cart').addEventListener('click', function() {
         createPopup(this, 'alreadyIn');
     } 
     else {
-        product.choice = choiceSelected();
+        thisProduct.choice = choiceSelected();
         addToCart();
         createPopup(this, 'successAddCart');
     }
