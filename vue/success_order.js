@@ -1,6 +1,5 @@
 // Commande page
 
-
 // ------------------------------------ FUNCTIONS ------------------------------------
 
 // Function : populate commande page (nbr commande + list of products)
@@ -29,13 +28,15 @@ const showSuccessOrder = () => {
     };
 };
 
+
 // =======================================================================================
+
 // ------------------------------------ VARIABLES ----------------------------------------
 
 const successOrder = JSON.parse(localStorage.getItem('successOrder'));
 
 
-// =======================================================================================
+// ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
 
 // If there is no order, user is redirected to index.html 
@@ -44,7 +45,6 @@ const successOrder = JSON.parse(localStorage.getItem('successOrder'));
 if (!successOrder) {
     document.location.href = '/index.html';
 }
-
 
 // If there is an order 
 

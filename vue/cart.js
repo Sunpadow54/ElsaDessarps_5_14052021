@@ -2,15 +2,15 @@
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
-// Show the products in cart
-let showCartProducts = () => {
-    
+// Function : create a table row for each product in localStorage
+
+const showCartProducts = () => {
+
     if (!cartStorage || cartStorage.length === 0) {
         document.querySelector("#list-products-in-cart tbody").innerHTML = `<tr>Vous n\'avez aucun produit dans votre Panier</tr>`;
     }
 
-    if(cartStorage) {
-
+    if (cartStorage) {
         for (let productInCart of cartStorage) {
             document.querySelector("#list-products-in-cart tbody").innerHTML +=
                 `
@@ -40,7 +40,7 @@ let showCartProducts = () => {
                 </tr>
             `;
         };
-    
+
         // color the div
         showColorVarnish();
         // Show total price of the cart
@@ -49,10 +49,9 @@ let showCartProducts = () => {
 };
 
 
-
 // Function: Delete a Product from Cart
 
-function deleteProduct () {
+function deleteProduct() {
     // search index of the product in cartStorage
     let idItem = this.getAttribute("id").split("_")[1] /* 'test' */;
     let indexItem = cartStorage.findIndex(item => item._id === idItem);
@@ -76,7 +75,7 @@ function deleteProduct () {
 // Function : multiply product price with quantity
 
 const calcTotalproduct = (product) => {
-	return Number(product.price) * Number(product.quantity);
+    return Number(product.price) * Number(product.quantity);
 };
 
 
@@ -91,8 +90,9 @@ const calcTotal = () => {
 }
 
 
+// Function : change the quantity of product
 
-function changeQty(idItem, addOrRemove) {
+let changeQty = (idItem, addOrRemove) => {
 
     const spanQty = document.querySelector(`#quantity_${idItem} > span`);
     const oldQty = parseInt(spanQty.textContent);
@@ -118,28 +118,32 @@ function changeQty(idItem, addOrRemove) {
     totalDiv.textContent = euro.format(calcTotal());
 }
 
+
 // =======================================================================================
+
 // ------------------------------------ VARIABLES ----------------------------------------
 
-
 // total price of the cart
-let totalDiv = document.querySelector('#total-cart td');
+const totalDiv = document.querySelector('#total-cart td');
 
 
-// =======================================================================================
+// ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
-    showCartProducts();
 
-// ------------------------------------ EVENTS ------------------------------------
+showCartProducts();
+
+
+// ---------------------------------------------------------------------------------------
+// ------------------------------------ EVENTS -------------------------------------------
 
 // Button : Select a Quantity of a product
 document.querySelectorAll("button.quantity").forEach((btnAddOrRemove) =>
     btnAddOrRemove.addEventListener('click', function () {
-
-        const idItem = this.parentElement.getAttribute("id").split("_")[1];
+        // search id of the product
+        let idItem = this.parentElement.getAttribute("id").split("_")[1];
+        // change quantity in localStorage & html
         changeQty(idItem, this.getAttribute("aria-label"));
-        
-	})
+    })
 );
 
 
@@ -150,9 +154,9 @@ document.querySelectorAll('.btn-close').forEach((btnClose) => {
 
 
 // Button : order messages (if cart is empty)
-document.getElementById('order-btn').addEventListener('click', function() {
+document.getElementById('order-btn').addEventListener('click', function () {
     // if cart is empty
-    if (cartStorage === null || cartStorage.length ===0) {
+    if (cartStorage === null || cartStorage.length === 0) {
         createPopup(this, 'emptyCart');
     }
 })

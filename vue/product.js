@@ -13,7 +13,7 @@ const showOneProduct = (productToShow) => {
     document.querySelector('#product_name').textContent = productToShow.name;
     document.querySelector('#product_text').textContent = productToShow.description;
     document.querySelector('#product_price').textContent = euro.format(productToShow.price);
-    
+
     // show varnish possible selection as radio inputs
     let productChoice = productToShow.varnish;
     for (let i in productChoice) {
@@ -122,22 +122,22 @@ getApiData(urlApiFurniture + '/' + [idProduct])
     .then(product => {
         showOneProduct(product);
         populateProductObj(product);
-        document.querySelectorAll('input[name="varnish"]').forEach(function(varnishBtn) {
+        document.querySelectorAll('input[name="varnish"]').forEach(function (varnishBtn) {
             varnishBtn.addEventListener('change', checkedVarnishStyle)
         });
-        
+
     })
     .catch(error => { document.getElementById('product-info').innerHTML = error.message });
 
 
 // ---------------------------------------------------------------------------------------
-// ------------------------------------ EVENTS ------------------------------------
+// ------------------------------------ EVENTS -------------------------------------------
 
-document.getElementById('add-cart').addEventListener('click', function() {
+document.getElementById('add-cart').addEventListener('click', function () {
     // if localStorage contain the product
     if (cartStorage !== null && findProductById(cartStorage, idProduct)) {
         createPopup(this, 'alreadyIn');
-    } 
+    }
     else {
         thisProduct.choice = choiceSelected();
         addToCart();

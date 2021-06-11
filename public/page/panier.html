@@ -9,20 +9,15 @@
     <!-- link googlefont -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
-
     <!-- link to bootstrap 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous" />
-
     <!-- stylesheet -->
     <link rel="stylesheet" href="/public/style/style.css" />
-
     <!-- Javascript view -->
     <script src="/vue/api.js"></script>
-
 
     <title>Orinoco - Panier</title>
 </head>
@@ -65,19 +60,15 @@
 
     <!-- MAIN -->
     <main class="container-fluid container-lg flex-shrink-0 position-relative">
-
         <!-- nav : where am I ?-->
         <nav class="container-fluid py-2" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a class="link-dark text-decoration-none" href="/index.html">Produits</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    Panier
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Panier</li>
             </ol>
         </nav>
-
         <!-- TABLE of products in Cart -->
         <div id="list-products-in-cart" class="container-fluid container-lg d-flex flex-column">
             <table class="table">
@@ -93,13 +84,10 @@
                         <th scope="col" class="fw-light">Sous-total</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <!-- container of all products cart -->
                 </tbody>
-
             </table>
-
             <table id="total-cart" class="table table-borderless w-25 align-self-center align-self-md-end">
                 <tbody>
                     <tr class="text-center total-price">
@@ -110,12 +98,12 @@
                 </tbody>
             </table>
         </div>
-
         <!-- ORDER FORM-->
         <form id="form" class="container-fluid container-lg fw-light mb-3" novalidate>
             <fieldset class="bg-brand-primary px-3 py-4">
                 <legend class="fs-4">Remplissez le formulaire de commande</legend>
                 <p class="fs-6 mb-4">( livraison uniquement en France )</p>
+                <!-- Input first-name & last-name -->
                 <div class="row mb-2 g-2">
                     <div class="col-md-4 mb-1">
                         <label for="last-name" class="form-label">Nom</label>
@@ -128,21 +116,20 @@
                         <small class="invalid-feedback"></small>
                     </div>
                 </div>
-
+                <!-- Input email -->
                 <div class="col-md-7 mb-1">
                     <label for="email-adress" class="form-label">Adresse e-mail</label>
                     <input type="email" class="form-control" id="email-adress" placeholder="exemple@domaine.com">
                     <small class="invalid-feedback"></small>
                 </div>
-
+                <!-- Input adress -->
                 <div class="col-md-7 mb-1">
                     <label for="adress" class="form-label">Adresse</label>
                     <input type="text" class="form-control" id="adress" placeholder="Adresse">
                     <small class="invalid-feedback"></small>
                 </div>
-
+                <!-- Input postal code & city -->
                 <div class="row mb-2 g-2">
-
                     <div class="col-md-2 mb-1">
                         <label for="post-code" class="form-label">Code Postal</label>
                         <input type="text" class="form-control" id="post-code">
@@ -154,23 +141,28 @@
                         <small class="invalid-feedback"></small>
                     </div>
                 </div>
+                <!-- Button submit form -->
                 <button type="submit" id="order-btn"
                     class="mx-auto col-md-3 btn btn-outline-dark mt-3">Commander</button>
             </fieldset>
         </form>
     </main>
-
+    
     <!-- FOOTER -->
     <footer class="mt-auto py-3 bg-brand-primary">
         <div class="container">
             <h2 class="text-center fw-light font-brand h4 lh-1">Orinoco</h2>
             <ul class="nav justify-content-center lh-1 flex-column flex-md-row">
-                <li class="nav-item"><a href="#" class="nav-link text-reset fw-light py-1">Mentions légales</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-reset fw-light py-1">Conditions générales de
-                        vente</a></li>
                 <li class="nav-item">
-                    <p class="m-0"><a href="mailto:email@truc.com"
-                            class=" nav-link text-reset fw-light py-1">Contact</a></p>
+                    <a href="#" class="nav-link text-reset fw-light py-1">Mentions légales</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-reset fw-light py-1">Conditions générales de vente</a>
+                </li>
+                <li class="nav-item">
+                    <p class="m-0">
+                        <a href="mailto:email@truc.com" class=" nav-link text-reset fw-light py-1">Contact</a>
+                    </p>
                 </li>
             </ul>
         </div>

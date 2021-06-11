@@ -2,14 +2,14 @@
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
-
-// FUNCTION : to show a list of products
+// FUNCTION : show a list of all products from Api
 
 const showAllProducts = async (urlApi) => {
 
     // fetch the api data
     let products = await getApiData(urlApi);
 
+    // no product in api ?
     if (products === 0) {
         let message = `Désolé, nous n'avons plus de produits de ce type.`;
         throw new Error(message);
@@ -36,7 +36,8 @@ const showAllProducts = async (urlApi) => {
 }
 
 
-// ---------------------------------------------------------------------------------------
+// =======================================================================================
+
 // ------------------------------------ POPULATE HTML ------------------------------------
 
 // Show all Products

@@ -1,11 +1,11 @@
 // UTILITIES
 
+// ------------------ LocalStorage -------------------------------
 
-// ------------------ LocalStorage
-
-// content of localStorage (key: cartStorage)
+//  Variable of the content of localStorage (key: cartStorage)
 
 let cartStorage = JSON.parse(localStorage.getItem('myCart'));
+
 
 // Function : Add/Delete to Local Storage
 
@@ -14,8 +14,7 @@ const sendToLocalStorage = (item, itemToSend) => localStorage.setItem(item, JSON
 const deleteLocalStorageItem = item => localStorage.removeItem(item);
 
 
-
-// ------------------ Format currency
+// ------------------ Format currency -----------------------------
 
 // convert number into euro format
 
@@ -26,7 +25,7 @@ const euro = new Intl.NumberFormat('fr-FR', {
 });
 
 
-// ------------------ Search by id
+// ------------------ Search by id -------------------------------
 
 // Function : to search a product (object) inside an array from _id parameter
 
@@ -36,7 +35,7 @@ const findProductById = (arrayToCheck, thingToFind) => {
 }
 
 
-// ------------------ Number of products in cart
+// ------------------ Number of products in cart ------------------
 
 // Function : Show count of products in cart
 
@@ -48,8 +47,9 @@ function showCountCart() {
 showCountCart();
 
 
-// ------------------ Varnish colors
+// ------------------ Varnish colors -------------------------------
 
+// array of all varnish
 const allVarnishs = {
     '#D2B48C': 'Tan',
     '#7B3F00': 'Chocolate',
@@ -60,6 +60,7 @@ const allVarnishs = {
     '#000000': 'Black',
     '#FFFFFF': 'White',
 }
+
 
 // Function : search a color hex from allVarnish Array
 
@@ -79,7 +80,7 @@ let showColorVarnish = () => {
 }
 
 
-// ------------------ Msg Popup
+// ------------------ Msg Popup ----------------------------------
 
 // Class for creating popup messages
 

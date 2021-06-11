@@ -2,7 +2,6 @@
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
-
 // Function : test regexs
 
 const regexTesting = (thingToTest, regex) => {
@@ -12,7 +11,7 @@ const regexTesting = (thingToTest, regex) => {
 
 // Function : show errors for inputs
 
-function showErrorInput(input, message) {
+const showErrorInput = (input, message) => {
     // insert error msg
     input.nextElementSibling.textContent = message;
     // add border warning + icon (bootstrapp)
@@ -23,7 +22,7 @@ function showErrorInput(input, message) {
 
 // Function : show success for inputs
 
-function showSuccesInput(input) {
+const showSuccesInput = input => {
     // remove error msg
     input.nextElementSibling.textContent = '';
     // add border valid + icon (bootstrapp)
@@ -34,7 +33,7 @@ function showSuccesInput(input) {
 
 // Function : check if the form is valid (and leave msg for each bad input)
 
-function checkInputValidity() {
+let checkInputValidity = () => {
     let formIsValid = true;
 
     // Regexs for validate inputs
@@ -106,10 +105,10 @@ const getContactInfo = () => {
     return contact
 }
 
+
 // Function : to create an array of all products id of the cart
 
 let getProductsBought = () => {
-
     let productsWanted = [];
     for (productInCart of cartStorage) {
         productsWanted.push(productInCart._id);
@@ -118,19 +117,11 @@ let getProductsBought = () => {
 }
 
 
-
-
 // =======================================================================================
-// ------------------------------------ VARIABLES ----------------------------------------
-
-const productsOrder = [];
-
-
-
 
 // ------------------------------------ EVENTS ------------------------------------
 
-// On submit 
+// Button : submit form (order products)
 
 document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
@@ -146,6 +137,10 @@ document.getElementById('form').addEventListener('submit', (event) => {
                 // redirection
                 document.location.href = '/public/page/commande.html?orderId=' + res.orderId;
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                const errordiv = document.createElement('p');
+                errordiv.innerHTML = error.message;
+                document.getElementById('form').appendChild(errordiv);
+            });
     }
 });

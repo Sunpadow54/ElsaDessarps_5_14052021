@@ -1,12 +1,13 @@
-// API
+// API 
 
 // ------------------------------------ VARIABLE ------------------------------------
 
-// All Api Url
+// All Api Urls
 
 const urlApiFurniture = "http://localhost:3000/api/furniture";
 const urlApiCameras = "http://localhost:3000/api/cameras";
 const urlApiTeddies = "http://localhost:3000/api/teddies";
+
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
@@ -32,7 +33,7 @@ const getApiData = async apiUrl => {
 }
 
 
-// Function : send data to API and get command number
+// Function : send data to API and get command number ...
 
 const postApiData = async (apiUrl, contactForm, productsBought) => {
 
@@ -44,14 +45,14 @@ const postApiData = async (apiUrl, contactForm, productsBought) => {
     const response = await fetch(apiUrl + '/order', {
         method: 'POST',
         headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
-            body: JSON.stringify(dataOrder)
+        body: JSON.stringify(dataOrder)
     });
 
     if (!response.ok) {
-        let message = `Désolé, il est impossible d'accéder à l'API. ( erreur status: ${response.status} )`;
+        let message = `Désolé, une erreur s'est produite. ( erreur status: ${response.status} )`;
         throw new Error(message);
     }
 
