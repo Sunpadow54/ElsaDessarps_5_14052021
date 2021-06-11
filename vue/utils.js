@@ -1,15 +1,13 @@
 // UTILITIES
 
 
-
 // ------------------ LocalStorage
 
 // content of localStorage (key: cartStorage)
 
 let cartStorage = JSON.parse(localStorage.getItem('myCart'));
 
-
-// Function : Add to Local Storage
+// Function : Add/Delete to Local Storage
 
 const sendToLocalStorage = (item, itemToSend) => localStorage.setItem(item, JSON.stringify(itemToSend));
 
@@ -43,12 +41,8 @@ const findProductById = (arrayToCheck, thingToFind) => {
 // Function : Show count of products in cart
 
 function showCountCart() {
-    let spanNbrInCart = document.querySelector('.cart-count');
-    if (cartStorage) {
-        spanNbrInCart.textContent = cartStorage.length;
-    } else {
-        spanNbrInCart.textContent = 0;
-    }
+    let nbrProducts = cartStorage ? cartStorage.length : 0;
+    document.querySelector('.cart-count').textContent = nbrProducts;
 }
 
 showCountCart();
@@ -92,19 +86,19 @@ let showColorVarnish = () => {
 class MsgPopup {
     constructor(msgFor) {
         switch (msgFor) {
-            case 'alreadyIn' :
+            case 'alreadyIn':
                 this.txt = 'Ce produit est déjà dans votre panier';
                 this.txtLink = 'Continuez vos achats';
                 this.href = '/index.html';
                 break;
-        
-            case 'emptyCart' :
+
+            case 'emptyCart':
                 this.txt = 'Vous n\'avez aucun produit dans votre panier';
                 this.txtLink = 'Allez voir nos offres !';
                 this.href = '/index.html';
                 break;
-            
-            case 'successAddCart' :
+
+            case 'successAddCart':
                 this.txt = 'Vous avez bien ajouté ce produit à votre panier !';
                 this.txtLink = 'Voir votre panier';
                 this.href = '/public/page/panier.html';
@@ -123,9 +117,9 @@ function createPopup(btn, msgFor) {
 
     // create popup div
     let popup = document.createElement('div');
-    popup.classList.add('toast' , 'show', 'position-absolute', 'bottom-0' , 'start-50' , 'translate-middle-x');
-    let htmlPopup = 
-            `
+    popup.classList.add('toast', 'show', 'position-absolute', 'bottom-0', 'start-50', 'translate-middle-x');
+    popup.innerHTML =
+        `
                 <div class="toast-header justify-content-center">
                     ${msg.txt}
                 </div>
@@ -134,7 +128,6 @@ function createPopup(btn, msgFor) {
                 </div>
             `;
 
-    popup.innerHTML = htmlPopup;
     document.querySelector('main').appendChild(popup);
 
     // disable the btn 

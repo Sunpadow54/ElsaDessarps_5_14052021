@@ -1,7 +1,7 @@
 // Commande page
 
-const successOrder = JSON.parse(localStorage.getItem('successOrder'));
 
+// ------------------------------------ FUNCTIONS ------------------------------------
 
 // Function : populate commande page (nbr commande + list of products)
 
@@ -13,7 +13,7 @@ const showSuccessOrder = () => {
     // show list of products bought
     for (let productBought of successOrder.products) {
         document.querySelector('#commande > ul').innerHTML +=
-        `
+            `
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-4">
@@ -29,12 +29,21 @@ const showSuccessOrder = () => {
     };
 };
 
+// =======================================================================================
+// ------------------------------------ VARIABLES ----------------------------------------
+
+const successOrder = JSON.parse(localStorage.getItem('successOrder'));
+
+
+// =======================================================================================
+// ------------------------------------ POPULATE HTML ------------------------------------
+
 // If there is no order, user is redirected to index.html 
 //(can't access to commande.html page if there is no successfull order)
 
 if (!successOrder) {
-    document.location.href='/index.html';
-} 
+    document.location.href = '/index.html';
+}
 
 
 // If there is an order 

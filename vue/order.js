@@ -1,4 +1,4 @@
-// form order
+// FORM Order 
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
@@ -37,9 +37,14 @@ function showSuccesInput(input) {
 function checkInputValidity() {
     let formIsValid = true;
 
-    // For all inputs of the contact form
-    document.querySelectorAll('#form input').forEach(input => {
+    // Regexs for validate inputs
+    const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const regexPostCodeFr = /\b\d{5}\b/;
+    const regexNoNum = /^[A-z\u00C0-\u00FF -]+$/;
+    const regexNoSpecial = /^[\w\u00C0-\u00FF -]+$/;
 
+    // For all inputs of the contact form
+    document.querySelectorAll('form input').forEach(input => {
 
         // Input is filled
         if (input.value) {
@@ -47,15 +52,15 @@ function checkInputValidity() {
 
             // test 'nom'
             if (input.id === 'last-name' && !regexTesting(input.value, regexNoNum)) {
-                showErrorInput(input, "Cet pas bon");
+                showErrorInput(input, "Veuillez ne pas écrire de chiffre pour votre nom");
                 formIsValid = false;
             }
 
             // test 'prénom'
             if (input.id === 'first-name' && !regexTesting(input.value, regexNoNum)) {
-                showErrorInput(input, "Cet pas bon");
+                showErrorInput(input, "Veuillez ne pas écrire de chiffre pour votre prénom");
                 formIsValid = false;
-        }
+            }
 
             // test 'email'
             if (input.id === 'email-adress' && !regexTesting(input.value, regexEmail)) {
@@ -65,7 +70,7 @@ function checkInputValidity() {
 
             // test 'adress'
             if (input.id === 'adress' && !regexTesting(input.value, regexNoSpecial)) {
-                showErrorInput(input, "Cette adresse pas valide");
+                showErrorInput(input, "Cette adresse pas conforme");
                 formIsValid = false;
             }
 
@@ -121,13 +126,6 @@ let getProductsBought = () => {
 const productsOrder = [];
 
 
-// Regexs for validate inputs
-
-const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const regexPostCodeFr = /\b\d{5}\b/;
-const regexNoNum = /^[A-z\u00C0-\u00FF -]+$/;
-const regexNoSpecial = /^[\w\u00C0-\u00FF -]+$/;
-
 
 
 // ------------------------------------ EVENTS ------------------------------------
@@ -146,8 +144,8 @@ document.getElementById('form').addEventListener('submit', (event) => {
                 // add the response to localStorage
                 sendToLocalStorage('successOrder', res);
                 // redirection
-                document.location.href='/public/page/commande.html?orderId=' + res.orderId;
+                document.location.href = '/public/page/commande.html?orderId=' + res.orderId;
             })
             .catch(error => console.log(error));
-    } 
+    }
 });

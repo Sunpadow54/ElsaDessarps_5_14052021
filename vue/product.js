@@ -6,7 +6,7 @@
 
 const showOneProduct = (productToShow) => {
 
-    let productImage = document.querySelector('#product img');
+    let productImage = document.querySelector('#product-info img');
     // insert data of the product inside html
     productImage.src = productToShow.imageUrl;
     productImage.alt = "Orinoco_" + productToShow.name;
@@ -40,6 +40,7 @@ const showOneProduct = (productToShow) => {
 // Function : add data to "product"
 
 let populateProductObj = (productInfo) => {
+    
     product = {
         _id: productInfo._id,
         name: productInfo.name,
@@ -117,9 +118,9 @@ const urlParameters = (new URL(document.location)).searchParams;
 let idProduct = urlParameters.get('id');
 
 // product to insert in LocalStorage
-let product;
+/* let product; */
 
-let btnAddToCart = document.getElementById('add-cart');
+/* let btnAddToCart = document.getElementById('add-cart'); */
 
 // ---------------------------------------------------------------------------------------
 // ------------------------------------ POPULATE HTML ------------------------------------
@@ -134,18 +135,19 @@ getApiData(urlApiFurniture + '/' + [idProduct])
     .then(product => {
         showOneProduct(product);
         populateProductObj(product);
+        
         document.querySelectorAll('input[name="varnish"]').forEach(function(varnishBtn) {
             varnishBtn.addEventListener('change', checkedVarnishStyle)
         
         })
         
     })
-    .catch(error => { document.getElementById('product').innerHTML = error.message });
+    .catch(error => { document.getElementById('product-info').innerHTML = error.message });
 
-
+   
 // ------------------------------------ EVENTS ------------------------------------
 
-btnAddToCart.addEventListener('click', function() {
+document.getElementById('add-cart').addEventListener('click', function() {
     // if localStorage contain the product
     if (cartStorage !== null && findProductById(cartStorage, idProduct)) {
         createPopup(this, 'alreadyIn');
