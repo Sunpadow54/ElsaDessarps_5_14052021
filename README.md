@@ -36,6 +36,10 @@ Dans le dossier <kbd> :file_folder: back </kbd>
 server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.)
 
+### :adhesive_bandage: App testing
+
+[Test plan](/plan-de-test.pdf)
+
 ***
 ![visuel Orinoco](/public/img/readme_visual_orinoco-2.jpg "visual_orinoco_2")
 
