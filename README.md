@@ -15,7 +15,6 @@ Réaliser un MVP front-end du site Orinoco (application pour le web).
 * Interagir avec un web service avec JavaScript.
 * Valider des données issues de sources externes.
 * Créer un plan de test pour une application.
-* Optimiser le référencement d'un site web.
 * Gérer des événements JavaScript.
 
 Lien vers le projet de départ (back-end): https://github.com/OpenClassrooms-Student-Center/JWDP5
