@@ -61,7 +61,7 @@ function deleteProduct() {
         // Delete product in cartStorage
         cartStorage.splice(indexItem, 1);
         // Send the new array to LocalStorage
-        sendToLocalStorage('myCart', cartStorage);
+        localStorage.setItem('myCart', JSON.stringify(cartStorage))
         // Delete html showing the product
         this.parentElement.parentElement.remove();
         // show new total price of cart
@@ -108,7 +108,7 @@ let changeQty = (idItem, addOrRemove) => {
 
     // Change in local Storage
     findProductById(cartStorage, idItem).quantity = newQty;
-    sendToLocalStorage('myCart', cartStorage);
+    localStorage.setItem('myCart', JSON.stringify(cartStorage));
 
     // Calcul the new total price of the product
     let totalProduct = calcTotalproduct(findProductById(cartStorage, idItem));

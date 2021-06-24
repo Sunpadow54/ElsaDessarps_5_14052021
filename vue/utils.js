@@ -7,12 +7,6 @@
 let cartStorage = JSON.parse(localStorage.getItem('myCart'));
 
 
-// Function : Add/Delete to Local Storage
-
-const sendToLocalStorage = (item, itemToSend) => localStorage.setItem(item, JSON.stringify(itemToSend));
-
-const deleteLocalStorageItem = item => localStorage.removeItem(item);
-
 
 // ------------------ Format currency -----------------------------
 

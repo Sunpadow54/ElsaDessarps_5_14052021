@@ -89,7 +89,7 @@ const addToCart = () => {
         // Add product to array cartStorage
         cartStorage.push(thisProduct);
         // push the array to LocalStorage on 'cartStorage' key
-        sendToLocalStorage('myCart', cartStorage);
+        localStorage.setItem('myCart', JSON.stringify(cartStorage));
         // Show new number of products in cart
         showCountCart();
     }

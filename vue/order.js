@@ -125,9 +125,9 @@ document.getElementById('form').addEventListener('submit', (event) => {
     if (checkInputValidity() && cartStorage.length !== 0) {
         postApiData(urlApiFurniture, getContactInfo(), getProductsBought())
             .then(res => {
-                deleteLocalStorageItem('myCart');
+                localStorage.removeItem('myCart');
                 // add the response to localStorage
-                sendToLocalStorage('successOrder', res);
+                localStorage.setItem('successOrder', JSON.stringify(res));
                 // redirection
                 document.location.href = '/public/page/commande.html?orderId=' + res.orderId;
             })
