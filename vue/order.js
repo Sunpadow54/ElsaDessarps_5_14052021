@@ -2,12 +2,6 @@
 
 // ------------------------------------ FUNCTIONS ------------------------------------
 
-// Function : test regexs
-
-const regexTesting = (thingToTest, regex) => {
-    return regex.test(thingToTest);
-}
-
 
 // Function : show errors for inputs
 
@@ -50,31 +44,31 @@ let checkInputValidity = () => {
             showSuccesInput(input);
 
             // test 'nom'
-            if (input.id === 'last-name' && !regexTesting(input.value, regexNoNum)) {
+            if (input.id === 'last-name' && !regexNoNum.test(input.value)) {
                 showErrorInput(input, "Veuillez ne pas écrire de chiffre pour votre nom");
                 formIsValid = false;
             }
 
             // test 'prénom'
-            if (input.id === 'first-name' && !regexTesting(input.value, regexNoNum)) {
+            if (input.id === 'first-name' && !regexNoNum.test(input.value)) {
                 showErrorInput(input, "Veuillez ne pas écrire de chiffre pour votre prénom");
                 formIsValid = false;
             }
 
             // test 'email'
-            if (input.id === 'email-adress' && !regexTesting(input.value, regexEmail)) {
+            if (input.id === 'email-adress' && !regexEmail.test(input.value)) {
                 showErrorInput(input, "Cet email n'est pas valide");
                 formIsValid = false;
             }
 
             // test 'adress'
-            if (input.id === 'adress' && !regexTesting(input.value, regexNoSpecial)) {
+            if (input.id === 'adress' && !regexNoSpecial.test(input.value)) {
                 showErrorInput(input, "Cette adresse pas conforme");
                 formIsValid = false;
             }
 
             // test 'code postal'
-            if (input.id === 'post-code' && !regexTesting(input.value, regexPostCodeFr)) {
+            if (input.id === 'post-code' && !regexPostCodeFr.test(input.value)) {
                 showErrorInput(input, "ce code postal n'est pas valide . exemple : 75001");
                 formIsValid = false;
             }
