@@ -125,9 +125,7 @@ getApiData(urlApiFurniture + '/' + [idProduct])
         document.querySelectorAll('input[name="varnish"]').forEach(function (varnishBtn) {
             varnishBtn.addEventListener('change', checkedVarnishStyle)
         });
-
     })
-    .catch(error => { document.getElementById('product-info').innerHTML = error.message });
 
 
 // ---------------------------------------------------------------------------------------

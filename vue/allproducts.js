@@ -9,12 +9,6 @@ const showAllProducts = async (urlApi) => {
     // fetch the api data
     let products = await getApiData(urlApi);
 
-    // no product in api ?
-    if (products === 0) {
-        let message = `Désolé, nous n'avons plus de produits de ce type.`;
-        throw new Error(message);
-    }
-
     // loop inside the data of the API
     for (let product of products) {
         // insert all data of the product inside html
@@ -41,5 +35,5 @@ const showAllProducts = async (urlApi) => {
 // ------------------------------------ POPULATE HTML ------------------------------------
 
 // Show all Products
-showAllProducts(urlApiFurniture)
-    .catch(error => { document.getElementById('list-products').innerHTML = error.message });
+showAllProducts(urlApiFurniture);
+    /* .catch(error => { document.getElementById('list-products').innerHTML = error.message }); */

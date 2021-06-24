@@ -14,22 +14,29 @@ const urlApiTeddies = "http://localhost:3000/api/teddies";
 // Function : fetch Api / return data
 
 const getApiData = async apiUrl => {
+    
+    const data = fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    let message = `Désolé, il est impossible d'accéder à l'API. ( erreur status: ${response.status} )`;
+                    throw new Error(message);
+                }
+                else {
+                    return response.json()
+                }
+            })
+            .then(result => { 
+                if (result === 0) {
+                    let message = `Désolé, il n'existe aucun produit de ce type ( erreur status: ${response.status} )`;
+                    throw new Error(message);
+                }
+                else {
+                    return result 
+                }
+            })
+            .catch(error => { document.querySelector('main').innerHTML = error.message });
 
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-        let message = `Désolé, il est impossible d'accéder à l'API. ( erreur status: ${response.status} )`;
-        throw new Error(message);
-    }
-
-    const data = await response.json();
-
-    if (data === 0) {
-        let message = `Désolé, il n'existe aucun produit de ce type ( erreur status: ${response.status} )`;
-        throw new Error(message);
-    }
-
-    return data;
+    return data
 }
 
 
