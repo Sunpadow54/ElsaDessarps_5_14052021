@@ -10,13 +10,17 @@ let cartStorage = JSON.parse(localStorage.getItem('myCart'));
 
 // ------------------ Format currency -----------------------------
 
-// convert number into euro format
+// convert price (in cents) into euro format
 
-const euro = new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: /* 2 */0
-});
+const euroFormat = (price) => {
+    const euro =  new Intl.NumberFormat('fr-FR', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: /* 2 */0
+    });
+
+    return euro.format(price / 100);
+  }
 
 
 // ------------------ Search by id -------------------------------

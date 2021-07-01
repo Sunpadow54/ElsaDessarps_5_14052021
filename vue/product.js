@@ -12,7 +12,7 @@ const showOneProduct = (productToShow) => {
     productImage.alt = "Orinoco_" + productToShow.name;
     document.querySelector('#product_name').textContent = productToShow.name;
     document.querySelector('#product_text').textContent = productToShow.description;
-    document.querySelector('#product_price').textContent = euro.format(productToShow.price);
+    document.querySelector('#product_price').textContent = euroFormat(productToShow.price);
 
     // show varnish possible selection as radio inputs
     let productChoice = productToShow.varnish;

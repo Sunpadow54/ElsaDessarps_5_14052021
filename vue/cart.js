@@ -28,7 +28,7 @@ const showCartProducts = () => {
                         <span class="rounded py-2 px-3 varnish-color"></span>
                         <span class="py-2 px-3 text-nowrap">${productInCart.choice}</span>
                     </td>
-                    <td class="fw-light text-center d-none d-md-table-cell">${euro.format(productInCart.price)}</td>
+                    <td class="fw-light text-center d-none d-md-table-cell">${euroFormat(productInCart.price)}</td>
                     <td class="fw-light text-center">
                         <div id="quantity_${productInCart._id}" class="btn-group me-2" role="group" aria-label="quantité de ${productInCart.name}">
                             <button type="button" class="btn btn-lg btn-light fw-light quantity" aria-label="remove">-</button>
@@ -36,7 +36,7 @@ const showCartProducts = () => {
                             <button type="button" class="btn btn-lg btn-light fw-light quantity" aria-label="add">+</button>
                         </div>
                     </td>
-                    <td id="total-produit_${productInCart._id}" class="fw-light text-center total-product">${euro.format(calcTotalproduct(productInCart))}</td>
+                    <td id="total-produit_${productInCart._id}" class="fw-light text-center total-product">${euroFormat(calcTotalproduct(productInCart))}</td>
                 </tr>
             `;
         };
@@ -44,7 +44,7 @@ const showCartProducts = () => {
         // color the div
         showColorVarnish();
         // Show total price of the cart
-        totalDiv.textContent = euro.format(calcTotal());
+        totalDiv.textContent = euroFormat(calcTotal());
     }
 };
 
@@ -65,7 +65,7 @@ function deleteProduct() {
         // Delete html showing the product
         this.parentElement.parentElement.remove();
         // show new total price of cart
-        totalDiv.textContent = euro.format(calcTotal());
+        totalDiv.textContent = euroFormat(calcTotal());
         // Show new number of products in cart
         showCountCart();
     }
@@ -112,10 +112,10 @@ let changeQty = (idItem, addOrRemove) => {
 
     // Calcul the new total price of the product
     let totalProduct = calcTotalproduct(findProductById(cartStorage, idItem));
-    document.querySelector(`#total-produit_${idItem}`).textContent = euro.format(totalProduct);
+    document.querySelector(`#total-produit_${idItem}`).textContent = euroFormat(totalProduct);
 
     //Show new Total of the cart
-    totalDiv.textContent = euro.format(calcTotal());
+    totalDiv.textContent = euroFormat(calcTotal());
 }
 
 

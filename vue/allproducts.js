@@ -20,7 +20,7 @@ const showAllProducts = async (urlApi) => {
                             <img src="${product.imageUrl}" class="card-img-top position-relative" alt="${product.name} Orinoco" height="400" width="415" />
                             <div class="card-body">
                                 <h2 class="card-title h5">${product.name}</h2>
-                                <p class="card-text">${euro.format(product.price)}</p>
+                                <p class="card-text">${euroFormat(product.price)}</p>
                             </div>
                         </a>
                     </article>
