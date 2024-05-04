@@ -52,7 +52,7 @@ console when the server starts, e.g. `Listening on port 3001`.)
 
 ## Auteur
 
-Sunpadow - elsa dessarps - 2021
+Sunpadow - 2021
 
 -----------------
 
